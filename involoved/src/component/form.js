@@ -24,7 +24,7 @@ class Form extends React.Component{
       userName: "",
       email: "",
       password: "",
-    })
+    });
   }
   render(){
     return (
