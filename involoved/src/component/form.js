@@ -2,11 +2,12 @@ import React from 'react'
 
 class Form extends React.Component{
   state={
-    firstName: '',
-    lastName: '',
-    userName: '',
     email: '',
     password: '',
+    address: '',
+    city: '',
+    state: '',
+    zipcode: '',
   }
   change = (e) => {
     this.setState({
@@ -19,55 +20,67 @@ class Form extends React.Component{
     this.props.onSubmit(this.state);
     console.log(this.state)
     this.setState({
-      firstName: "",
-      lastName: "",
-      userName: "",
       email: "",
       password: "",
-    })
+      address: "",
+      userName: "",
+      state: "",
+      zipcode: "",
+    });
   }
   render(){
     return (
       <form>
         <input
-          name="firstName"
-          placeholder="First Name"
-          value={this.state.firstName}
-          onChange={e => this.change(e)}
-          />
-          <br />
-
-        <input
-          name="lastName"
-          placeholder="Last Name"
-          value={this.state.lastName}
-          onChange={e => this.change(e)}
-          />
-          <br />
-
-        <input
-          name="userName"
-          placeholder="User Name"
-          value={this.state.userName}
+          name="email"
+          placeholder="Email"
+          value={this.state.email}
           onChange={e => this.change(e)}
           />
           <br />
 
           <input
-            name="email"
-            placeholder="Email"
-            value={this.state.email}
+            name="password"
+            placeholder="Password"
+            type='password'
+            value={this.state.password}
+            onChange={e => this.change(e)}
+            />
+            <br />
+
+        <input
+          name="address"
+          placeholder="Address"
+          value={this.state.address}
+          onChange={e => this.change(e)}
+          />
+          <br />
+
+        <input
+          name="city"
+          placeholder="City"
+          value={this.state.city}
+          onChange={e => this.change(e)}
+          />
+          <br />
+
+          <input
+            name="state"
+            placeholder="State"
+            value={this.state.state}
             onChange={e => this.change(e)}
             />
             <br />
 
             <input
-              name="password"
-              placeholder="Password"
-              value={this.state.password}
+              name="zipcode"
+              placeholder="Zipcode"
+              value={this.state.zipcode}
               onChange={e => this.change(e)}
               />
               <br />
+
+
 
               <button onClick={(e) => this.onSubmit(e)}>Submit</button>
       </form>
