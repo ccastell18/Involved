@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import '../App.css';
-import Form from '../component/form';
+import './App.css';
+import Form from '../component/form.js';
+// import Form2 from '../component/login_form'
 //email password address city state zipcode
-class App extends Component{
-
-
-
+class App extends Component {
   onSubmit = (fields) =>{
     this.setState({fields})
   }

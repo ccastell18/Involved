@@ -32,7 +32,7 @@ class Form extends React.Component{
     return (
       <form>
         <input
-          email="email"
+          name="email"
           placeholder="Email"
           value={this.state.email}
           onChange={e => this.change(e)}
@@ -42,6 +42,7 @@ class Form extends React.Component{
           <input
             name="password"
             placeholder="Password"
+            type='password'
             value={this.state.password}
             onChange={e => this.change(e)}
             />
