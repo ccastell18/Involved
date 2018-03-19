@@ -5,8 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import Form from '../component/form.js';
 import HomeScreen from '../component/homeScreen'
 import Auth from '../component/Auth'
-import NavBar from '../component/navbar'
-//email password address city state zipcode
+import NavBar from '../component/navbar'//email password address city state zipcode
 class App extends Component {
   onSubmit = (fields) =>{
     this.setState({fields})
@@ -31,6 +30,3 @@ class App extends Component {
 }
 
 export default App;
-// <Form onSubmit={fields => this.onSubmit(fields)}/>
-//
-// <Auth />
