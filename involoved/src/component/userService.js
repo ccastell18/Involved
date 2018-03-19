@@ -11,7 +11,7 @@ class UserService {
 	}
 
 	updateData(data, id){
-		axios.post('http://localhost:30000/user/update/'+id, {
+		axios.post('http://localhost:30000/user/put/'+id, {
 			userData: data
 		})
 			.then(res => this.setState({ user: res.data }))

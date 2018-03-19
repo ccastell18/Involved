@@ -1,9 +1,11 @@
 import React from 'react'
+import axios from 'axios';
+import {link} from 'react-router'
 
-class Form2 extends React.Component{
-  state={
+class Form2 extends React.Component {
+  state = {
     email: '',
-    password: '',
+    password: ''
   }
   change = (e) => {
     this.setState({
@@ -11,37 +13,22 @@ class Form2 extends React.Component{
     });
   }
 
-  onSubmit = (e) =>{
+  onSubmit = (e) => {
     e.preventDefault();
     this.props.onSubmit(this.state);
     console.log(this.state.props)
-    this.setState({
-      email: "",
-      password: "",
-    });
+    this.setState({email: "", password: ""});
   }
-  render(){
-    return (
-      <form>
-        <input
-          name="email"
-          placeholder="Email"
-          value={this.state.email}
-          onChange={e => this.change(e)}
-          />
-          <br />
+  render() {
+    return (<form>
+      <input name="email" placeholder="Email" value={this.state.email} onChange={e => this.change(e)}/>
+      <br/>
 
-          <input
-            name="password"
-            placeholder="Password"
-            value={this.state.password}
-            onChange={e => this.change(e)}
-            />
-            <br />
+      <input name="password" placeholder="Password" value={this.state.password} onChange={e => this.change(e)}/>
+      <br/>
 
-              <button onClick={(e) => this.onSubmit(e)}>Submit</button>
-      </form>
-    );
+      <button onClick={(e) => this.onSubmit(e)}>Submit</button>
+    </form>);
   }
 }
 
