@@ -1,91 +1,132 @@
-import React from 'react'
+import React, { Component } from 'react';
+import './form.css';
+import axios from 'axios';
 
-class Form extends React.Component{
-  state={
-    email: '',
-    password: '',
-    address: '',
-    city: '',
-    state: '',
-    zipcode: '',
-  }
-  change = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  }
+class Form extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			email: '',
+			password: '',
+			address: '',
+			city: '',
+			state: '',
+			zipcode: ''
+		};
+		this.handleSubmit = this.handleSubmit.bind(this);
+		// this.changeHandler = this.changeHandler.bind(this);
+		// this.submitHandler = this.submitHandler.bind(this);
+	}
 
-  onSubmit = (e) =>{
-    e.preventDefault();
-    this.props.onSubmit(this.state);
-    console.log(this.state)
-    this.setState({
-      email: "",
-      password: "",
-      address: "",
-      userName: "",
-      state: "",
-      zipcode: "",
-    });
-  }
-  render(){
-    return (
-      <form>
-        <input
-            name="email"
-            placeholder="Email"
-            value={this.state.email}
-            onChange={e => this.change(e)}
-          />
-          <br />
+	changeHandler(e) {
+		this.setState({
+			[e.target.name]: e.target.value
+		});
+	}
 
-        <input
-          name="password"
-          placeholder="Password"
-          type='password'
-          value={this.state.password}
-          onChange={e => this.change(e)}
-        />
-        <br />
+	onSubmitHandler(e) {
+		e.preventDefault();
+		this.props.onSubmit(this.state);
+		console.log('this is the stuff in the form', this.state);
+		this.setState({
+			email: '',
+			password: '',
+			address: '',
+			city: '',
+			state: '',
+			zipcode: ''
+		});
 
-        <input
-          name="address"
-          placeholder="Address"
-          value={this.state.address}
-          onChange={e => this.change(e)}
-        />
-        <br />
+	}
 
-        <input
-          name="city"
-          placeholder="City"
-          value={this.state.city}
-          onChange={e => this.change(e)}
-        />
-        <br />
+	handleSubmit(event) {
+		event.preventDefault();
 
-        <input
-          name="state"
-          placeholder="State"
-          value={this.state.state}
-          onChange={e => this.change(e)}
-        />
-        <br />
+		let data = {
+			email: this.state.email,
+			password: this.state.password,
+			address: this.state.address,
+			city: this.state.city,
+			state: this.state.state,
+			zipcode: this.state.zipcode
+		};
 
-        <input
-          name="zipcode"
-          placeholder="Zipcode"
-          value={this.state.zipcode}
-          onChange={e => this.change(e)}
-        />
-        <br />
+		axios.post('http://localhost:3000/user/post', data).then((result) => {
+			alert('Posted:' + result);
+			let clearedData = {
+				email: '',
+				password: '',
+				address: '',
+				city: '',
+				state: '',
+				zipcode: ''
+			};
+			this.setState(clearedData);
+		}).catch((error) => {
+			alert('Failed: ' + error);
+
+		});
+		// axios.put('http://localhost:3000/user/put', data)
+		// 	.then((result) => {})
+		// 	.bind(this);
+	}
 
 
+	render() {
+		return (
 
-        button onClick={(e) => this.onSubmit(e)}>Submit</button>
-      </form>
-    );
-  }
+			<div>
+				<form onSubmit={this.handleSubmit} onChange={this.handleChange}>
+					<lable className="label-form">
+	      Email:
+					</lable>
+					<input name="email" placeholder="Email" value={this.state.email} onChange={e => this.changeHandler(e)}/>
+
+					<br/>
+					<lable className="label-form">
+	      Password:
+					</lable>
+					<input name="password" placeholder="Password" type='password' value={this.state.password} onChange={e => this.changeHandler(e)}/>
+
+					<br/>
+					<lable className="label-form">
+	      Address:
+					</lable>
+					<input name="address" placeholder="Address" value={this.state.address} onChange={e => this.changeHandler(e)}/>
+
+					<br/>
+					<label className="label-form">
+	      City:
+					</label>
+					<input name="city" placeholder="City" value={this.state.city} onChange={e => this.changeHandler(e)}/>
+					<br/>
+					<label className="label-form">
+	      State:
+					</label>
+					<input name="state" placeholder="State" value={this.state.state} onChange={e => this.changeHandler(e)}/>
+					<br/>
+					<label className="label-form">
+	      ZipCode:
+					</label>
+					<input name="zipcode" placeholder="Zipcode" value={this.state.zipcode} onChange={e => this.changeHandler(e)}/>
+					<br/>
+
+					<button className="btn" type="submit">Submit</button>
+
+					<button className="btn" type="delete">Delete</button>
+				</form>
+				<div>
+					<br />
+					<a type="button" href ="/">HomeScreen</a>
+					<br/>
+
+					<a type="button" href ="/auth">Login</a>
+				</ div>
+			</div>
+		);
+
+
+	}
 }
 
 export default Form;
