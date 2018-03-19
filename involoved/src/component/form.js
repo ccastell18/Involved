@@ -32,57 +32,57 @@ class Form extends React.Component{
     return (
       <form>
         <input
-          name="email"
-          placeholder="Email"
-          value={this.state.email}
-          onChange={e => this.change(e)}
+            name="email"
+            placeholder="Email"
+            value={this.state.email}
+            onChange={e => this.change(e)}
           />
           <br />
 
-          <input
-            name="password"
-            placeholder="Password"
-            type='password'
-            value={this.state.password}
-            onChange={e => this.change(e)}
-            />
-            <br />
+        <input
+          name="password"
+          placeholder="Password"
+          type='password'
+          value={this.state.password}
+          onChange={e => this.change(e)}
+        />
+        <br />
 
         <input
           name="address"
           placeholder="Address"
           value={this.state.address}
           onChange={e => this.change(e)}
-          />
-          <br />
+        />
+        <br />
 
         <input
           name="city"
           placeholder="City"
           value={this.state.city}
           onChange={e => this.change(e)}
-          />
-          <br />
+        />
+        <br />
 
-          <input
-            name="state"
-            placeholder="State"
-            value={this.state.state}
-            onChange={e => this.change(e)}
-            />
-            <br />
+        <input
+          name="state"
+          placeholder="State"
+          value={this.state.state}
+          onChange={e => this.change(e)}
+        />
+        <br />
 
-            <input
-              name="zipcode"
-              placeholder="Zipcode"
-              value={this.state.zipcode}
-              onChange={e => this.change(e)}
-              />
-              <br />
+        <input
+          name="zipcode"
+          placeholder="Zipcode"
+          value={this.state.zipcode}
+          onChange={e => this.change(e)}
+        />
+        <br />
 
 
 
-              <button onClick={(e) => this.onSubmit(e)}>Submit</button>
+        button onClick={(e) => this.onSubmit(e)}>Submit</button>
       </form>
     );
   }
