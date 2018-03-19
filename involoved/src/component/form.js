@@ -1,11 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './form.css';
 import axios from 'axios';
-// import Instance from '../axios-backend'
-// import UserService from './userService';
-// import { push } from 'react-router-redux';
 
-class Form extends React.Component {
+class Form extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -76,45 +73,59 @@ class Form extends React.Component {
 
 
 	render() {
-		return (<form onSubmit={this.handleSubmit} onChange={this.handleChange}>
-			<lable className="label-form">
-      Email:
-			</lable>
-			<input name="email" placeholder="Email" value={this.state.email} onChange={e => this.changeHandler(e)}/>
+		return (
 
-			<br/>
-			<lable className="label-form">
-      Password:
-			</lable>
-			<input name="password" placeholder="Password" type='password' value={this.state.password} onChange={e => this.changeHandler(e)}/>
+			<div>
+				<form onSubmit={this.handleSubmit} onChange={this.handleChange}>
+					<lable className="label-form">
+	      Email:
+					</lable>
+					<input name="email" placeholder="Email" value={this.state.email} onChange={e => this.changeHandler(e)}/>
 
-			<br/>
-			<lable className="label-form">
-      Address:
-			</lable>
-			<input name="address" placeholder="Address" value={this.state.address} onChange={e => this.changeHandler(e)}/>
+					<br/>
+					<lable className="label-form">
+	      Password:
+					</lable>
+					<input name="password" placeholder="Password" type='password' value={this.state.password} onChange={e => this.changeHandler(e)}/>
 
-			<br/>
-			<label className="label-form">
-      City:
-			</label>
-			<input name="city" placeholder="City" value={this.state.city} onChange={e => this.changeHandler(e)}/>
-			<br/>
-			<label className="label-form">
-      State:
-			</label>
-			<input name="state" placeholder="State" value={this.state.state} onChange={e => this.changeHandler(e)}/>
-			<br/>
-			<label className="label-form">
-      ZipCode:
-			</label>
-			<input name="zipcode" placeholder="Zipcode" value={this.state.zipcode} onChange={e => this.changeHandler(e)}/>
-			<br/>
+					<br/>
+					<lable className="label-form">
+	      Address:
+					</lable>
+					<input name="address" placeholder="Address" value={this.state.address} onChange={e => this.changeHandler(e)}/>
 
-			<button className="btn" type="submit">Submit</button>
+					<br/>
+					<label className="label-form">
+	      City:
+					</label>
+					<input name="city" placeholder="City" value={this.state.city} onChange={e => this.changeHandler(e)}/>
+					<br/>
+					<label className="label-form">
+	      State:
+					</label>
+					<input name="state" placeholder="State" value={this.state.state} onChange={e => this.changeHandler(e)}/>
+					<br/>
+					<label className="label-form">
+	      ZipCode:
+					</label>
+					<input name="zipcode" placeholder="Zipcode" value={this.state.zipcode} onChange={e => this.changeHandler(e)}/>
+					<br/>
 
-			<button className="btn" type="delete">Delete</button>
-		</form>);
+					<button className="btn" type="submit">Submit</button>
+
+					<button className="btn" type="delete">Delete</button>
+				</form>
+				<div>
+					<br />
+					<a type="button" href ="/">HomeScreen</a>
+					<br/>
+
+					<a type="button" href ="/auth">Login</a>
+				</ div>
+			</div>
+		);
+
+
 	}
 }
 
