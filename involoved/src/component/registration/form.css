@@ -1,0 +1,21 @@
+
+.label-form{
+	color: red;
+	text-align: left;
+
+	padding-right: 275px
+}
+
+
+.btn{
+	background-color: white;
+	 border: 1px solid black;
+	 color: black;
+	 padding: 10px 25px;
+	 text-align: center;
+	 text-decoration: none;
+	 display: inline-block;
+	 margin: 4px 2px;
+	 cursor: pointer;
+
+}
