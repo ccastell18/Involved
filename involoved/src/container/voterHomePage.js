@@ -4,6 +4,7 @@ import Election from '../component/elections'
 import Button from '../component/buttons'
 import Representatives from '../component/representatives'
 import VoterInfo from '../component/voter_info'
+import Polling from '../component/polling'
 
 const api_key = 'AIzaSyBgfiDlTi-VtbLrQ0CjcV6z2KbVX_h7kwA';
 const street_address='7201 Wood Hollow Drive';
@@ -21,13 +22,14 @@ class VoterHomePage extends Component{
       ocd: [],
       representatives: [],
       div: [],
-    	voterInfo: []
-
+    	voterInfo: [],
+			pollingInfo: []
     };
 
     this.getElections = this.getElections.bind(this);
     this.getRepresentatives = this.getRepresentatives.bind(this);
     this.getVoterInfo= this.getVoterInfo.bind(this);
+		this.getPollingInfo= this.getPollingInfo.bind(this)
   }
 
 	async getElections() {
@@ -69,7 +71,7 @@ class VoterHomePage extends Component{
   }
 
   async getVoterInfo() {
-		let voterObj = {}
+
     console.log('Starting to fetch voterinfo now.');
     const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/voterinfo?key=${api_key}&address=${street_address} ${city} ${state}&electionId=${id}`)
     console.log("got info")
@@ -87,21 +89,27 @@ class VoterHomePage extends Component{
 			}
 		})
 		console.log(vote)
-		voterObj.election = data.election
-
-		console.log(voterObj)
-
-
-
-    this.setState({
+			this.setState({
       voterInfo: vote
 		});
     console.log('New State', this.state);
   }
 
+	async getPollingInfo() {
+
+    console.log('Starting to fetch polling now.');
+    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/voterinfo?key=${api_key}&address=${street_address} ${city} ${state}&electionId=${id}`)
+    console.log("got info")
+    const data = await api_call.json()
+    console.log(data);
+
+		this.setState({
+			pollingInfo: data.pollingLocations
+		})
+				}
+
 
   displayVoterInfo() {
-		
     if (this.state.voterInfo.length >0) {
       return this.state.voterInfo.map( voter => {
         return (<VoterInfo
@@ -114,6 +122,15 @@ class VoterHomePage extends Component{
     }
   }
 
+	displayPollingInfo(){
+			if(this.state.pollingInfo){
+			(<Polling
+
+				/>
+
+			)
+}
+	}
 
   displayElections() {
 
@@ -144,16 +161,20 @@ class VoterHomePage extends Component{
 		const list = this.displayElections();
 		const list1 = this.displayRepresentatives();
 		const list2 = this.displayVoterInfo();
+		const list3 = this.displayPollingInfo();
 		return(
 			<div>
 				<Button
 					getElections={this.getElections}
 					getRepresentatives={this.getRepresentatives}
 					getVoterInfo={this.getVoterInfo}
+					getPollingInfo={this.getPollingInfo}
 					/>
+
 				{list}
 				{list1}
 				{list2}
+				{list3}
 			</div>);
 	}
 
