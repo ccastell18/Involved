@@ -3,11 +3,13 @@ import React, { Component } from 'react';
 import Election from '../component/elections'
 import Button from '../component/buttons'
 import Representatives from '../component/representatives'
+import VoterInfo from '../component/voter_info'
 
 const api_key = 'AIzaSyBgfiDlTi-VtbLrQ0CjcV6z2KbVX_h7kwA';
 const street_address='7201 Wood Hollow Drive';
 const city="Austin";
 const state="TX";
+const id = '2000'
 
 class VoterHomePage extends Component{
 
@@ -19,7 +21,8 @@ class VoterHomePage extends Component{
       ocd: [],
       representatives: [],
       div: [],
-      voterInfo: [],
+    	voterInfo: []
+
     };
 
     this.getElections = this.getElections.bind(this);
@@ -66,30 +69,54 @@ class VoterHomePage extends Component{
   }
 
   async getVoterInfo() {
+		let voterObj = {}
     console.log('Starting to fetch voterinfo now.');
-    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/voterinfo?key=${api_key}&address=${street_address} ${city} ${state}&electionId=2000`)
+    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/voterinfo?key=${api_key}&address=${street_address} ${city} ${state}&electionId=${id}`)
     console.log("got info")
     const data = await api_call.json()
     console.log(data);
+		let vote = [];
+		data.contests.forEach((contest) =>{
+			if(contest.candidates){
+			contest.candidates.forEach((candidate) =>{
+				let rep = {}
+				rep.office = contest.office;
+				rep.candidate = candidate;
+				vote.push(rep)
+				})
+			}
+		})
+		console.log(vote)
+		voterObj.election = data.election
+
+		console.log(voterObj)
+
+
+
     this.setState({
-      voterInfo: data.voterInfo
-    });
+      voterInfo: vote
+		});
     console.log('New State', this.state);
   }
 
 
-  // displayVoterInfo() {
-  //   if (this.state.voterInfo.length > 0) {
-  //     return this.state.voterInfo.map( voterInfo => {
-  //       return (<VoterInfo />);
-  //     })
-  //   } else {
-  //     return (<p>Press a button above to begin.</p>);
-  //   }
-  // }
+  displayVoterInfo() {
+
+    if (this.state.voterInfo.length >0) {
+      return this.state.voterInfo.map( voter => {
+        return (<VoterInfo
+						name={voter.candidate.name}
+						party={voter.candidate.party}
+						candidateUrl={voter.candidate.candidateUrl}/>);
+      })
+    } else {
+      return (<p>Press a button above to begin.</p>);
+    }
+  }
 
 
   displayElections() {
+
     if (this.state.elections.length > 0) {
       return this.state.elections.map( election => {
         return (<Election key={election.id} name={election.name} electionDay={election.electionDay}/>);
@@ -117,9 +144,9 @@ class VoterHomePage extends Component{
   }
 
 	render() {
-		// const list = this.displayElections();
-		// const list1 = this.displayRepresentatives();
-
+		const list = this.displayElections();
+		const list1 = this.displayRepresentatives();
+		const list2 = this.displayVoterInfo();
 		return(
 			<div>
 				<Button
@@ -138,7 +165,9 @@ class VoterHomePage extends Component{
 						{this.displayRepresentatives()}
 					</div>
 				</div>
-
+				{list}
+				{list1}
+				{list2}
 			</div>
 		);
 	}
