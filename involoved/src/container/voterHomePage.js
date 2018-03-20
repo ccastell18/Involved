@@ -61,7 +61,7 @@ class VoterHomePage extends Component{
         reps.push(newRep);
       });
     })
-    console.log(reps)
+    console.log("reps",reps)
     this.setState({
       representatives: reps,
       ocd: div
@@ -101,7 +101,7 @@ class VoterHomePage extends Component{
 
 
   displayVoterInfo() {
-		
+
     if (this.state.voterInfo.length >0) {
       return this.state.voterInfo.map( voter => {
         return (<VoterInfo
@@ -122,7 +122,7 @@ class VoterHomePage extends Component{
         return (<Election key={election.id} name={election.name} electionDay={election.electionDay}/>);
       })
     } else {
-      return (<p>Press a button above to begin.</p>);
+      return (<p></p>);
     }
   }
 
@@ -130,13 +130,16 @@ class VoterHomePage extends Component{
   displayRepresentatives() {
     if (this.state.representatives.length > 0) {
       return this.state.representatives.map( representative => {
-
-        return (<Representatives office={representative.office} name={representative.official.name} party={representative.official.party}
-        phones={representative.official.phones}
-        urls={representative.official.urls}/>);
+				console.log("PICTURES", representative);
+        return (
+					<Representatives 																											office={representative.office} 	 																			name={representative.official.name} 			party={representative.official.party}
+        	phones={representative.official.phones}
+        	urls={representative.official.urls}
+					image={representative.official.photoUrl}/>
+				);
       })
     } else {
-      return (<p>No representatives as of now.</p>);
+      return (<p></p>);
     }
   }
 
@@ -151,10 +154,22 @@ class VoterHomePage extends Component{
 					getRepresentatives={this.getRepresentatives}
 					getVoterInfo={this.getVoterInfo}
 					/>
+
+				<div className="container-fluid">
+					<div className="row">
+						{this.displayElections()}
+					</div>
+				</div>
+				<div className="container-fluid">
+					<div className="row">
+						{this.displayRepresentatives()}
+					</div>
+				</div>
 				{list}
 				{list1}
 				{list2}
-			</div>);
+			</div>
+		);
 	}
 
 
