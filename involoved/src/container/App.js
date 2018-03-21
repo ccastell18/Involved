@@ -13,6 +13,16 @@ import NavBar from '../component/navbar/navbar'//email password address city sta
 import ContactInfo from '../component/navbar/ContactInfo'
 import VoterHomePage from './voterHomePage'
 import TermsOfUse from '../component/navbar/termsOfUse'
+import Tech from '../component/navbar/tech';
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+`
+
 class App extends Component{
 	constructor(){
 		super();
@@ -25,18 +35,21 @@ class App extends Component{
 
   render(){
 			return (
-				<div className="App">
-					<NavBar />
-					<Switch>
-						<Route path="/VoterHomePage" component={VoterHomePage} />
-						<Route path="/form" component={Form} />
-						<Route path="/auth" component={Auth} />
-						<Route path="/" exact component={HomeScreen} />
-						<Route path="/contactInfo" component={ContactInfo} />
-						<Route path="/TermsOfUse" component={TermsOfUse} />
-					</Switch>
+				<Wrapper className="App">
+					<div>
+						<NavBar />
+						<Switch>
+							<Route path="/VoterHomePage" component={VoterHomePage} />
+							<Route path="/form" component={Form} />
+							<Route path="/auth" component={Auth} />
+							<Route path="/" exact component={HomeScreen} />
+							<Route path="/contactInfo" component={ContactInfo} />
+							<Route path="/TermsOfUse" component={TermsOfUse} />
+							<Route path="/Tech" component={Tech} />
+						</Switch>
+					</div>
 					<Footer />
-				</div>
+				</Wrapper>
     );
   }
 };

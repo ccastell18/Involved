@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import James from './james.jpg';
 import Chris from './chris.jpg';
-
+ 
 
 const Image = styled.img`
 align: right;

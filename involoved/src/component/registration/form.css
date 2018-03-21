@@ -1,9 +1,13 @@
 
 .label-form{
-	color: red;
+	color: black;
 	text-align: left;
+	padding-right: 325px
+}
+#label{
+	color: red;
+	padding-right: 50px
 
-	padding-right: 275px
 }
 
 

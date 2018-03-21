@@ -11,12 +11,14 @@ const city="Austin";
 const state="TX";
 const id = '2000'
 
-class VoterHomePage extends Component{
+class VoterHomePage extends Component {
 
-	constructor(){
-    super();
+	constructor(props){
+    super(props);
     this.state = {
-
+			showElections: false,
+			showReps: false,
+			showVotorInfo: false,
       elections: [],
       ocd: [],
       representatives: [],
@@ -24,7 +26,7 @@ class VoterHomePage extends Component{
     	voterInfo: []
 
     };
-
+		this.showItems = this.showItems.bind(this);
     this.getElections = this.getElections.bind(this);
     this.getRepresentatives = this.getRepresentatives.bind(this);
     this.getVoterInfo= this.getVoterInfo.bind(this);
@@ -144,31 +146,59 @@ class VoterHomePage extends Component{
     }
   }
 
+	showItems(type){
+		console.log('this!', this);
+		let showElections = (type === 'elections') ? true : false;
+		let showReps = (type === 'reps') ? true : false;
+		let showVotorInfo = (type === 'voter') ? true : false;
+		this.setState({
+			showElections,
+			showReps,
+			showVotorInfo,
+		})
+	}
+
 	render() {
-		const list = this.displayElections();
-		const list1 = this.displayRepresentatives();
-		const list2 = this.displayVoterInfo();
+
+
 		return(
 			<div>
 				<Button
+					showItems={this.showItems}
 					getElections={this.getElections}
 					getRepresentatives={this.getRepresentatives}
 					getVoterInfo={this.getVoterInfo}
-					/>
-
-				<div className="container-fluid">
-					<div className="row">
-						{this.displayElections()}
-					</div>
-				</div>
-				<div className="container-fluid">
-					<div className="row">
-						{this.displayRepresentatives()}
-					</div>
-				</div>
-				{list}
-				{list1}
-				{list2}
+				/>
+				{
+					this.state.showElections &&
+						(
+							<div className="container-fluid">
+								<div className="row">
+									{this.displayElections()}
+								</div>
+							</div>
+						)
+				}
+				{
+					this.state.showReps &&
+					(
+						<div className="container-fluid">
+							<div className="row">
+								{this.displayRepresentatives()}
+							</div>
+						</div>
+					)
+				}
+				{
+					this.state.showVotorInfo &&
+					(
+						<div className="container-fluid">
+							<div className="row">
+								{this.displayVoterInfo()}
+							</div>
+						</div>
+					)
+				}
 			</div>
 		);
 	}
@@ -176,3 +206,6 @@ class VoterHomePage extends Component{
 
 }
 export default VoterHomePage;
+// {list}
+// {list1}
+// {list2}
