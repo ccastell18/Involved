@@ -79,19 +79,19 @@ class Form extends Component {
 				<form onSubmit={this.handleSubmit} onChange={this.handleChange}>
 					<label className="label-form">
 	      Email:
-			</label>
+					</label>
 					<input name="email" placeholder="Email" value={this.state.email} onChange={e => this.changeHandler(e)}/>
 
 					<br/>
 					<label className="label-form">
 	      Password:
-			</label>
+					</label>
 					<input name="password" placeholder="Password" type='password' value={this.state.password} onChange={e => this.changeHandler(e)}/>
 
 					<br/>
 					<label className="label-form">
 	      Address:
-			</label>
+					</label>
 					<input name="address" placeholder="Address" value={this.state.address} onChange={e => this.changeHandler(e)}/>
 
 					<br/>

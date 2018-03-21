@@ -12,12 +12,14 @@ const city="Austin";
 const state="TX";
 const id = '2000'
 
-class VoterHomePage extends Component{
+class VoterHomePage extends Component {
 
-	constructor(){
-    super();
+	constructor(props){
+    super(props);
     this.state = {
-
+			showElections: false,
+			showReps: false,
+			showVotorInfo: false,
       elections: [],
       ocd: [],
       representatives: [],
@@ -25,7 +27,7 @@ class VoterHomePage extends Component{
     	voterInfo: [],
 			pollingInfo: []
     };
-
+		this.showItems = this.showItems.bind(this);
     this.getElections = this.getElections.bind(this);
     this.getRepresentatives = this.getRepresentatives.bind(this);
     this.getVoterInfo= this.getVoterInfo.bind(this);
@@ -63,7 +65,7 @@ class VoterHomePage extends Component{
         reps.push(newRep);
       });
     })
-    console.log(reps)
+    console.log("reps",reps)
     this.setState({
       representatives: reps,
       ocd: div
@@ -110,9 +112,10 @@ class VoterHomePage extends Component{
 
 
   displayVoterInfo() {
-    if (this.state.voterInfo.length >0) {
+		if (this.state.voterInfo.length >0) {
       return this.state.voterInfo.map( voter => {
         return (<VoterInfo
+						title={voter.candidate.office}
 						name={voter.candidate.name}
 						party={voter.candidate.party}
 						candidateUrl={voter.candidate.candidateUrl}/>);
@@ -139,7 +142,7 @@ class VoterHomePage extends Component{
         return (<Election key={election.id} name={election.name} electionDay={election.electionDay}/>);
       })
     } else {
-      return (<p>Press a button above to begin.</p>);
+      return (<p></p>);
     }
   }
 
@@ -147,27 +150,49 @@ class VoterHomePage extends Component{
   displayRepresentatives() {
     if (this.state.representatives.length > 0) {
       return this.state.representatives.map( representative => {
-
-        return (<Representatives office={representative.office} name={representative.official.name} party={representative.official.party}
-        phones={representative.official.phones}
-        urls={representative.official.urls}/>);
+				console.log("PICTURES", representative);
+        return (
+					<Representatives 																											office={representative.office} 	 																			name={representative.official.name} 			party={representative.official.party}
+        	phones={representative.official.phones}
+        	urls={representative.official.urls}
+					image={representative.official.photoUrl}/>
+				);
       })
     } else {
-      return (<p>No representatives as of now.</p>);
+      return (<p></p>);
     }
   }
 
+	showItems(type){
+		console.log('this!', this);
+		let showElections = (type === 'elections') ? true : false;
+		let showReps = (type === 'reps') ? true : false;
+		let showVotorInfo = (type === 'voter') ? true : false;
+		this.setState({
+			showElections,
+			showReps,
+			showVotorInfo,
+		})
+	}
+
 	render() {
+<<<<<<< HEAD
 		const list = this.displayElections();
 		const list1 = this.displayRepresentatives();
 		const list2 = this.displayVoterInfo();
 		const list3 = this.displayPollingInfo();
+=======
+
+
+>>>>>>> 9e8cb57ca1f72e9d0188cfc3ded4309050ec947f
 		return(
 			<div>
 				<Button
+					showItems={this.showItems}
 					getElections={this.getElections}
 					getRepresentatives={this.getRepresentatives}
 					getVoterInfo={this.getVoterInfo}
+<<<<<<< HEAD
 					getPollingInfo={this.getPollingInfo}
 					/>
 
@@ -176,8 +201,46 @@ class VoterHomePage extends Component{
 				{list2}
 				{list3}
 			</div>);
+=======
+				/>
+				{
+					this.state.showElections &&
+						(
+							<div className="container-fluid">
+								<div className="row">
+									{this.displayElections()}
+								</div>
+							</div>
+						)
+				}
+				{
+					this.state.showReps &&
+					(
+						<div className="container-fluid">
+							<div className="row">
+								{this.displayRepresentatives()}
+							</div>
+						</div>
+					)
+				}
+				{
+					this.state.showVotorInfo &&
+					(
+						<div className="container-fluid">
+							<div className="row">
+								{this.displayVoterInfo()}
+							</div>
+						</div>
+					)
+				}
+			</div>
+		);
+>>>>>>> 9e8cb57ca1f72e9d0188cfc3ded4309050ec947f
 	}
 
 
 }
 export default VoterHomePage;
+// {list}
+// {list1}
+// {list2}

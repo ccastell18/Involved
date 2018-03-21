@@ -1,18 +1,18 @@
 import React from 'react';
 
 const VoterInfo = (props) =>{
-  return (
-    <div>
+	return (
+		<div>
 
-      <div>
-        <p>Office: {props.title}</p>
+			<div>
+				<p>Office: {props.title}</p>
 
-        <p>candidate name: {props.name}</p>
-        <p>candidate party: {props.party}</p>
-        <p>candidate URL: {props.candidateUrl}</p>
-      </div>
-  </div>
-  )
-}
+				<p>candidate name: {props.name}</p>
+				<p>candidate party: {props.party}</p>
+				<p>candidate URL: {props.candidateUrl}</p>
+			</div>
+		</div>
+	);
+};
 
-export default VoterInfo
+export default VoterInfo;
