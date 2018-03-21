@@ -1,9 +1,9 @@
 #myFooter {
 		/* display: flex; */
     background-color: #darkgrey;
-    color: white;
+    color: blue;
 		/* min-height: calc(100vh - 20vh); */
-		
+
     bottom: 0;
 		min-width: 100%
 
@@ -12,6 +12,7 @@
 
 #myFooter .row {
     margin: 0 85px;
+		background-color: slategray;
 }
 
 #myFooter .footer-copyright {
@@ -47,7 +48,7 @@
 }
 
 #myFooter a {
-    color: #d2d1d1;
+    color: white;
     text-decoration: none;
 }
 
