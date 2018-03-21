@@ -1,17 +1,15 @@
 import React from 'react';
 
 const VoterInfo = (props) =>{
-	return (
-		<div>
 
-			<div>
-				<p>Office: {props.title}</p>
+  return (
+    <div>
+      <p>Office: {props.office}</p>
+      <p>Candidate Name: {props.name}</p>
+      <p>Party: {props.party}</p>
+      <p>Website: {props.candidateUrl}</p>
+    </div>
 
-				<p>candidate name: {props.name}</p>
-				<p>candidate party: {props.party}</p>
-				<p>candidate URL: {props.candidateUrl}</p>
-			</div>
-		</div>
 	);
 };
 

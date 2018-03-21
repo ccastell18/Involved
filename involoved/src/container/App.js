@@ -23,6 +23,7 @@ const Wrapper = styled.div`
 	justify-content: space-between;
 `
 
+
 class App extends Component{
 	constructor(){
 		super();
