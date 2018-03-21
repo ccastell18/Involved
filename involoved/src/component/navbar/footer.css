@@ -1,15 +1,14 @@
 #myFooter {
-    background-color: #182c39;
+		/* display: flex; */
+    background-color: #darkgrey;
     color: white;
-    padding-top: 10px;
+		/* min-height: calc(100vh - 20vh); */
+		
+    bottom: 0;
+		min-width: 100%
+
 }
 
-#map-container {
-    height: 75px;
-    width: 100%;
-    margin-top: 30px;
-    margin-bottom: 10px;
-}
 
 #myFooter .row {
     margin: 0 85px;
@@ -17,7 +16,7 @@
 
 #myFooter .footer-copyright {
     background-color: #10222e;
-    padding-top: 3px;
+  	padding-top: 12px;
     padding-bottom: 3px;
     text-align: center;
 }
@@ -76,6 +75,7 @@
 @media screen and (max-width: 767px) {
     #myFooter {
         text-align: center;
+				padding-top: 100px;
     }
     #myFooter .row {
         margin: 0;

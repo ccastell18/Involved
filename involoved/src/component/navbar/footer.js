@@ -17,7 +17,7 @@ class Footer extends Component{
 						<div className="col-sm-3">
 							<h5>About us</h5>
 							<ul>
-								<li><a href="/">Company</a></li>
+								<li><a href="/Tech">Tech Used</a></li>
 								<li><a href="/ContactInfo">Contact us</a></li>
 							</ul>
 						</div>
