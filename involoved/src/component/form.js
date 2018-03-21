@@ -77,37 +77,37 @@ class Form extends Component {
 
 			<div>
 				<form onSubmit={this.handleSubmit} onChange={this.handleChange}>
-					<lable className="label-form">
-	      Email:
-					</lable>
+					<label className="label-form">
+	      	Email:
+				</label>
 					<input name="email" placeholder="Email" value={this.state.email} onChange={e => this.changeHandler(e)}/>
 
 					<br/>
-					<lable className="label-form">
-	      Password:
-					</lable>
+				<label className="label-form">
+	      	Password:
+				</label>
 					<input name="password" placeholder="Password" type='password' value={this.state.password} onChange={e => this.changeHandler(e)}/>
 
 					<br/>
-					<lable className="label-form">
-	      Address:
-					</lable>
+				<label className="label-form">
+	      	Address:
+				</label>
 					<input name="address" placeholder="Address" value={this.state.address} onChange={e => this.changeHandler(e)}/>
 
 					<br/>
-					<label className="label-form">
-	      City:
-					</label>
+				<label className="label-form">
+	      		City:
+				</label>
 					<input name="city" placeholder="City" value={this.state.city} onChange={e => this.changeHandler(e)}/>
 					<br/>
-					<label className="label-form">
-	      State:
-					</label>
+				<label className="label-form">
+	      		State:
+				</label>
 					<input name="state" placeholder="State" value={this.state.state} onChange={e => this.changeHandler(e)}/>
 					<br/>
-					<label className="label-form">
-	      ZipCode:
-					</label>
+				<label className="label-form">
+	      		ZipCode:
+				</label>
 					<input name="zipcode" placeholder="Zipcode" value={this.state.zipcode} onChange={e => this.changeHandler(e)}/>
 					<br/>
 

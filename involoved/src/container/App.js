@@ -11,6 +11,7 @@ import Auth from '../component/Auth'
 import NavBar from '../component/navbar'//email password address city state zipcode
 import VoterHomePage from './voterHomePage'
 
+
 class App extends Component{
 	constructor(){
 		super();
