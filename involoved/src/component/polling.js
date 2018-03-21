@@ -7,7 +7,11 @@ const Polling = (props) => {
     <p>Location Name: {props.locationName}</p>
     <p>Address: {props.line1}</p>
     <div>
+<<<<<<< HEAD
     {props.city},{props.state}
+=======
+    <p>{props.city},{props.state}</p>
+>>>>>>> 384225127b06aa15f5b181cc260f2d4402306b31
     {props.zip}
     </div>
     <p>Hours: {props.pollingHours}</p>
