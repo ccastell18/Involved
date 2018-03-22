@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import James from './james.jpg';
 import Chris from './chris.jpg';
- 
+import './tech.css';
 
 const Image = styled.img`
 align: right;
@@ -19,34 +19,50 @@ const ContactInfo = () => {
 
 
 			<div className="row">
-			  <div className="col-xs-6 col-sm-6">
-					<div>James Lockwood<br/>
-						<a href="mailto:Ksjjl05@gmail.com">email:	Ksjjl05@gmail.com</a>
-						<br/>
-						<a link="https://github.com/jameslock86">github:	https://github.com/jameslock86</a>
-						<br/>
-						<a link="https://www.linkedin.com/in/james-lockwood/">linkedIn:
+				<div className="col-xs-6 col-sm-6">
+					<div className="Cat">
+						<div>James Lockwood<br/>
+							<a href="mailto:Ksjjl05@gmail.com">email:	Ksjjl05@gmail.com</a>
+							<br/>
+							<a href="https://github.com/jameslock86">github:	https://github.com/jameslock86</a>
+							<br/>
+							<a href="https://www.linkedin.com/in/james-lockwood/">linkedIn:
 		https://www.linkedin.com/in/james-lockwood/</a>
-						<br/>
-			 </div>
-		 </div>
-			  <div className="col-xs-6 col-sm-6"><Image src={James}/>
+							<br/>
+							<div>
+								<p><h3>About Me:</h3>
+									I became a Web Page Developer to be able to help other people and make things that can better the world and the people around me.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div className="col-xs-6 col-sm-6"><Image src={James}/>
 				</div>
 
 
-			  <div className="clearfix visible-xs-block"></div>
-
-			  <div className="col-xs-6 col-sm-6">
-					<div>Christopher Castellan
-						<br/>
-						<a link="mailto:c.castellano18@gmail.com"> email:	c.castellano18@gmail.com</a>
-						<br/>
-						<a link="https://github.com/ccastell18">github:	https://github.com/ccastell18</a>
-						<br/>
-						<a link="https://www.linkedin.com/in/christopher-castellano/">
+				<div className="col-xs-6 col-sm-6">
+					<div className="Cat">
+						<div>Christopher Castellan
+							<br/>
+							<a href="mailto:c.castellano18@gmail.com">
+								email:c.castellano18@gmail.com</a>
+							<br/>
+							<a href="https://github.com/ccastell18">github:	https://github.com/ccastell18</a>
+							<br/>
+							<a href="https://www.linkedin.com/in/christopher-castellano/">
 				linkedIn:	https://www.linkedin.com/in/christopher-castellano/</a>
-						<br/>
-					</div></div>
+							<br/>
+							<div>
+								<p><h3>About Me:</h3>
+										I became a Web Page Developer to be able to help other people and make things that can better the world and the people around me.
+								</p>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
 				<div className="col-xs-6 col-sm-6"><Image src={Chris}/>
 				</div>
 			</div>

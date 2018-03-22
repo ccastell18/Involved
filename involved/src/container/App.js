@@ -15,13 +15,16 @@ import VoterHomePage from './voterHomePage'
 import TermsOfUse from '../component/navbar/termsOfUse'
 import Tech from '../component/navbar/tech';
 import styled from 'styled-components'
-
+import FAQ from '../component/navbar/FAQ'
+import Map from '../component/smart_buttons/map'
 const Wrapper = styled.div`
+background-color: lightgrey;
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 `
+
 
 class App extends Component{
 	constructor(){
@@ -46,6 +49,8 @@ class App extends Component{
 							<Route path="/contactInfo" component={ContactInfo} />
 							<Route path="/TermsOfUse" component={TermsOfUse} />
 							<Route path="/Tech" component={Tech} />
+							<Route path="/FAQ" component={FAQ} />
+							<Route path="/Map" component={Map} />
 						</Switch>
 					</div>
 					<Footer />

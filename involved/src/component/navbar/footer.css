@@ -76,7 +76,7 @@
 @media screen and (max-width: 767px) {
     #myFooter {
         text-align: center;
-				padding-top: 100px;
+				/* padding-top: px; */
     }
     #myFooter .row {
         margin: 0;

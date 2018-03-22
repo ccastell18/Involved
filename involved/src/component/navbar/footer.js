@@ -7,32 +7,39 @@ class Footer extends Component{
 			<footer id="myFooter">
 				<div className="container">
 					<div className="row">
-						<div className="col-sm-3">
+						<div className="col-sm-2">
 							<h5>Get started</h5>
 							<ul>
 								<li><a href="/">Home</a></li>
 								<li><a href="/form">Sign up</a></li>
 							</ul>
 						</div>
-						<div className="col-sm-3">
+						<div className="col-sm-2">
 							<h5>About us</h5>
 							<ul>
 								<li><a href="/Tech">Tech Used</a></li>
 								<li><a href="/ContactInfo">Contact us</a></li>
 							</ul>
 						</div>
-						<div className="col-sm-3">
+						<div className="col-sm-4">
 							<h5>Support</h5>
 							<ul>
-								<li><a href="/">FAQ</a></li>
+								<li><a href="/FAQ">FAQ</a></li>
 								<li><a href="https://www.usa.gov/register-to-vote">Voters Registration</a></li>
 							</ul>
 						</div>
-						<div className="col-sm-3">
+						<div className="col-sm-2">
 							<h5>Legal</h5>
 							<ul>
 								<li><a href="/TermsOfUse">Terms of Use</a></li>
-								<li><a href="/TermsOfUse">Privacy Policy</a></li>
+								<li><a href="http://www.politifact.com/">Fact Checker</a></li>
+							</ul>
+						</div>
+						<div className="col-sm-2">
+							<h5>Features</h5>
+							<ul>
+								<li><a href="/Map">Map of U.S. Districts</a></li>
+								<li><a href="http://www.politifact.com/">Fact Checker</a></li>
 							</ul>
 						</div>
 					</div>

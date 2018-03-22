@@ -7,7 +7,7 @@ import Css from './techPics/css.png';
 import Express from './techPics/express.jpg';
 import Html from './techPics/html.png';
 import Js from './techPics/js.png';
-import Knex from './techPics/knex.png';
+// import Kknex from './techPics/kknex.png';
 import Mongodb from './techPics/mongodb.png';
 import MongooseJS from './techPics/MongooseJS.png';
 import Nodejs from './techPics/nodejs.png';
@@ -34,6 +34,7 @@ const Tech = () => {
 			<Image src={Express}/>
 			<Image src={Html}/>
 			<Image src={Js}/>
+			
 			<Image src={Mongodb}/>
 			<Image src={MongooseJS}/>
 			<Image src={Nodejs}/>

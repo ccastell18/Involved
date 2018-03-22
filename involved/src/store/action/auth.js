@@ -1,3 +1,4 @@
+import axios from 'axios';
 import * as actionTypes from './actionTypes';
 
 export const authStart= () => {
@@ -21,5 +22,7 @@ export const authFail = (error) => {
 export const auth = (email, password) => {
 	return dispatch => {
 		dispatch(authStart());
+
+		// axios.post('')
 	};
 };

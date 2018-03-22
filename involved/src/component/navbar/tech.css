@@ -2,3 +2,51 @@
 	background-color: lightgrey;
 	margin-bottom: 0;
 }
+.Paragraph{
+
+	padding-right: 30%;
+	padding-left: 30%;
+	border: 1px solid lightgrey;
+
+}
+.Paragraph1{
+
+	padding-right: 15%;
+	padding-left: 15%;
+	border: 1px solid lightgrey;
+
+}
+
+.Listfaq{
+	padding-right: 30%;
+	padding-left: 30%;
+	border: 1px solid lightgrey;
+
+}
+.Titles{
+	padding-right: 30%;
+	padding-left: 30%;
+	border: 1px solid lightgrey;
+
+}
+.ListTou{
+	padding-right: 30%;
+	padding-left: 30%;
+	border: 1px solid lightgrey;
+
+
+}
+.Cat{
+	display: flex;
+	border: 1px solid slategray;
+
+}
+.Faq{
+	border: 1px solid slategray;
+	margin-left: 30%;
+	margin-right:30%;
+	padding-bottom: 6%
+}
+.Paragraph3{
+	text-decoration: underline;
+}

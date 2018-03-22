@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-// import './form.css';
+import './form.css';
 import axios from 'axios';
 import styled from 'styled-components';
 import Party from './pics/party.jpeg';
-import Party1 from './pics/party1.jpg';
+
+
 
 const Image = styled.img`
 width: 300px;
-height: 300px;
+height: 400px;
 padding-bottom: 15px;
 vertical-align: middle;
 margin-left: 50px;
@@ -29,7 +30,7 @@ class Form extends Component {
 		// this.changeHandler = this.changeHandler.bind(this);
 		// this.submitHandler = this.submitHandler.bind(this);
 	}
-
+	// changes the handler so you can type
 	changeHandler(e) {
 		this.setState({
 			[e.target.name]: e.target.value
@@ -64,7 +65,7 @@ class Form extends Component {
 		};
 
 		axios.post('http://localhost:3000/user/post', data).then((result) => {
-			alert('Posted:' + result);
+			// alert('Posted:' + result);
 			let clearedData = {
 				email: '',
 				password: '',
@@ -78,9 +79,11 @@ class Form extends Component {
 			alert('Failed: ' + error);
 
 		});
-		// axios.put('http://localhost:3000/user/put', data)
-		// 	.then((result) => {})
-		// 	.bind(this);
+
+
+
+
+
 	}
 
 
@@ -91,11 +94,11 @@ class Form extends Component {
 
 			<div className="container">
 				<div className="row">
-					<div className="col-sm-4">
-						<Image src={Party}/>
+					<div className="col-sm-3">
+
 					</div>
 
-					<div className="col-sm-4">
+					<div className="col-sm-5">
 						<div>
 							<div className="row">
 								<div className="col-med-4">
@@ -136,17 +139,23 @@ class Form extends Component {
 										<input className="Input" name="zipcode" placeholder="Zipcode" value={this.state.zipcode} onChange={e => this.changeHandler(e)}/>
 										<br/>
 
-										<button className="btn" type="submit">Submit</button>
-										<button className="btn" type="delete">Delete</button>
+
+										<button className="btn" type="submit" >
+											<a href="/Auth">Register</a>
+										</button>
+
+
 									</form>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div className="col-sm-4">
-						<Image src={Party1}/>
+						<Image src={Party}/>
 					</div>
 				</div>
+
+
 			</div>
 
 

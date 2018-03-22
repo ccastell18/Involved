@@ -4,11 +4,10 @@ import * as actions from '../../store/action/index'
 import Input from '../input/input'
 // import Button from '../UI/buttons'
 import './form.css'
-import styled from 'styled-components'
-const FlexBoxWrapper = styled.div`
-	display:flex;
-	flex-direction: row;
-`
+import '../UI/button.css'
+
+
+
 
 class Auth extends Component {
   state = {
@@ -17,7 +16,7 @@ class Auth extends Component {
         elemnetType: 'input',
         elementConfig: {
           type: 'email',
-          placeholder: 'email Address'
+          placeholder: 'Email Address'
         },
         value: '',
         validation: {
@@ -32,7 +31,7 @@ class Auth extends Component {
         elemnetType: 'input',
         elementConfig: {
           type: 'password',
-          placeholder: 'password'
+          placeholder: 'Password'
         },
         value: '',
         validation: {
@@ -90,7 +89,7 @@ submitHandler = (event) =>{
 }
 
   render() {
-console.log('stuff here', this.state.controls[0]);
+console.log('stuff here', this.state.controls);
     const formElementsArray = [];
     for (let key in this.state.controls) {
       formElementsArray.push({id: key, config: this.state.controls[key]});
@@ -103,32 +102,29 @@ console.log('stuff here', this.state.controls[0]);
 		changed={(event) => this.inputChangedHandler(event, formElement.id)}/>
        ))
 			return(
-				<div className="row">
-				  <FlexBoxWrapper className="col-md-6">
-						<div>
-							<label id="label" className="label-form">
-								Email:
-							</label>
-							<br/>
-							<label id="label">
-								Password:
-							</label>
-						</div>
-						<div>
-							<p>
-								<form type="Input" onSubmit={this.submitHandler}>
-									{form}
-								</form>
-							</p>
-						</div>
-					</FlexBoxWrapper>
+				<div className="container">
+					<div className="row">
+						<div className="col-sm-3">
+							
+								</div>
+						<div className="col-sm-3">
+
+					<form className="AuthForm" type="Input" onSubmit={this.submitHandler}>
+ 						{form}
+						<button className="btn" buttontype="Success">
+							<a href="/Map">submit</a>
+							</button>
+					</form>
+				</div>
+					<div className="col-sm-3">
+
+							</div>
+
+				</div>
+
+				</div>
 
 
-
-					 <div className="col-md-6">
- 							<button className="btn" buttonType="Success">Submit</button>
- 					</div>
-			</div>
       )
 	}
 

@@ -7,6 +7,7 @@ class Button extends React.Component {
 		this.handleClickElections = this.handleClickElections.bind(this);
 		this.handleClickGetVoterInfo = this.handleClickGetVoterInfo.bind(this);
 		this.handleClickRepresentatives = this.handleClickRepresentatives.bind(this);
+		this.handleClickPollingInfo = this.handleClickPollingInfo.bind(this);
 	}
 	handleClickElections(){
 		this.props.getElections();
@@ -22,13 +23,18 @@ class Button extends React.Component {
 		this.props.getRepresentatives();
 		this.props.showItems('reps');
 	}
-
+	handleClickPollingInfo(){
+		this.props.getPollingInfo();
+		this.props.showItems('polling');
+	}
 	render(){
 		return (
 			<div>
 				<button onClick={() => {this.handleClickElections();}}>Elections</button>
 				<button onClick={() => {this.handleClickGetVoterInfo();}}>Voter Information</button>
 				<button onClick={() => {this.handleClickRepresentatives();}}>Representatives</button>
+
+				<button onClick={() => {this.handleClickPollingInfo();}}>Polling Information</button>
 			</div>
 		);
 	}
