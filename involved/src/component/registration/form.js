@@ -3,9 +3,11 @@ import './form.css';
 import axios from 'axios';
 import styled from 'styled-components';
 import Party from './pics/party.jpeg';
-
-
-
+import { bindActionCreators } from 'redux';
+import { userAddress, userCity, userState } from '../../store/action/index.js';
+import { connect } from 'react-redux';
+import store from '../../store/store.js';
+import { Redirect } from 'react-router';
 const Image = styled.img`
 width: 300px;
 height: 400px;
@@ -40,7 +42,7 @@ class Form extends Component {
 	onSubmitHandler(e) {
 		e.preventDefault();
 		this.props.onSubmit(this.state);
-		console.log('this is the stuff in the form', this.state);
+		// console.log('this is the stuff in the form', this.state);
 		this.setState({
 			email: '',
 			password: '',
@@ -64,6 +66,17 @@ class Form extends Component {
 			zipcode: this.state.zipcode
 		};
 
+		console.log('look at me!',this.props.userAddress(data.address));
+		console.log('look at me!2',	this.props.userCity(data.city));
+		console.log('look at me!3',this.props.userState(data.state));
+		// console.log(
+		// 	data.address,
+		// 	data.city,
+		// 	data.state);
+
+
+
+
 		axios.post('http://localhost:3000/user/post', data).then((result) => {
 			// alert('Posted:' + result);
 			let clearedData = {
@@ -75,11 +88,13 @@ class Form extends Component {
 				zipcode: ''
 			};
 			this.setState(clearedData);
-		}).catch((error) => {
-			alert('Failed: ' + error);
+			console.log('axios posted here!',result);
+			
+		})
 
-		});
-
+			.catch((error) => {
+				alert('Failed: ' + error);
+			});
 
 
 
@@ -93,6 +108,7 @@ class Form extends Component {
 
 
 			<div className="container">
+
 				<div className="row">
 					<div className="col-sm-3">
 
@@ -118,7 +134,9 @@ class Form extends Component {
 										<label className="label-form">
 											Address:
 										</label>
-										<input className="Input" name="address" placeholder="Address" value={this.state.address} onChange={e => this.changeHandler(e)}/>
+										<input className="Input" name="address" placeholder="Address"
+											value={this.state.address}
+											onChange={e => this.changeHandler(e)}/>
 
 										<br/>
 										<label className="label-form">
@@ -140,8 +158,7 @@ class Form extends Component {
 										<br/>
 
 
-										<button className="btn" type="submit" >
-											<a href="/Auth">Register</a>
+										<button className="btn" type="submit" >Register
 										</button>
 
 
@@ -166,4 +183,20 @@ class Form extends Component {
 	}
 }
 
-export default Form;
+const mapDispatchToProps = dispatch => {
+	return bindActionCreators({
+		userAddress,userCity,userState
+
+	}, dispatch);
+};
+
+
+// const mapStateToProps = function(store) {
+// 	return {
+// 		users: store.userState.users
+//
+//
+//
+// 	};
+// };
+export default connect(null, mapDispatchToProps)(Form);

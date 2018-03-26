@@ -16,7 +16,7 @@ class NavBar extends Component {
 							<ul className="nav navbar-nav">
 								<li><a href="/">HomeScreen</a></li>
 								<li><a href="/form">Register</a></li>
-								<li><a href="/auth">Login</a></li>
+								<li><a href="/Map">Map of U.S. District</a></li>
 								<li><a href="/voterHomePage">VHP</a></li>
 							</ul>
 						</div>
