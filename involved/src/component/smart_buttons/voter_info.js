@@ -2,10 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 const Wrapper = styled.div`
 border: 3px solid green;
-
-width: 33%;
+width: 25%;
 height: 132px;
-
 `;
 
 const VoterInfo = (props) =>{
@@ -15,7 +13,7 @@ const VoterInfo = (props) =>{
 			<p>Office: {props.title}</p>
 			<p>candidate name: {props.name}</p>
 			<p>candidate party: {props.party}</p>
-			<p>candidate URL: {props.candidateUrl}</p>
+			<a href={props.candidateUrl}>{props.candidateUrl}</a>
 		</Wrapper>
 
 	);

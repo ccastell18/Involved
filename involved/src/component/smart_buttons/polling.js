@@ -20,7 +20,6 @@ const Polling = (props) => {
 			<br/>
 			{props.line1}
 			<br/>
-
 			{props.city},{props.state}
 			<br/>
 			{props.zip}
