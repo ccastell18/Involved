@@ -7,18 +7,24 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-
+import reducers from './store/reducer/reducer.js';
+import{ userAddress, userCity, userState } from './store/action/index.js';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const rootReducer = combineReducers({
-	// burgerBuilder: burgerBuilderReducer,
-	// order: orderReducer
-});
+// const Allreducers = combineReducers({
+// 	address: userAddress,
+// 	city: userCity,
+// 	state: userState,
+// });
 
 
-const store = createStore(rootReducer, composeEnhancers(
+
+const store = createStore(reducers, composeEnhancers(
 	applyMiddleware(thunk)
 ));
+
+
+
 const app = (
 	<Provider store={store}>
 		<BrowserRouter>

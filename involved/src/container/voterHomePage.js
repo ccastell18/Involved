@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
 // import Form from '../component/form'
-import Election from '../component/smart_buttons/elections';
-import Button from '../component/buttons';
-import Representatives from '../component/smart_buttons/representatives';
-import VoterInfo from '../component/smart_buttons/voter_info';
-import Polling from '../component/smart_buttons/polling';
-import './App.css';
-import axios from 'axios';
 
+import Election from '../component/smart_buttons/elections'
+import Button from '../component/buttons'
+import Representatives from '../component/smart_buttons/representatives'
+import VoterInfo from '../component/smart_buttons/voter_info'
+import Polling from '../component/smart_buttons/polling'
+import './App.css'
+import Form  from '../component/registration/form.js'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { userAddress, userCity, userState } from '../store/action/index.js'
+import Iframe from 'react-iframe';
+import store from '../store/store.js'
 const api_key = 'AIzaSyBgfiDlTi-VtbLrQ0CjcV6z2KbVX_h7kwA';
-const street_address='1515 Wickersham';
-const city="";
-const state='tx';
-const id = '2000'
+const address = userAddress
+const city = userCity
+const state = userState
+const id = '2000';
+// data.address,
+// data.city,
+// data.state
+
 class VoterHomePage extends Component {
 
 	constructor(props){
@@ -91,7 +100,7 @@ class VoterHomePage extends Component {
   }
 
   async getRepresentatives(e) {
-    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/representatives?key=${api_key}&address=${street_address} ${city} ${state}`)
+    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/representatives?key=${api_key}&address=${address} ${city} ${state}`)
     const data = await api_call.json()
     console.log(data)
     let div = Object.keys(data.divisions)
@@ -112,8 +121,11 @@ class VoterHomePage extends Component {
   }
 
   async getVoterInfo() {
-		let voteObj = {};
-    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/voterinfo?key=${api_key}&address=${street_address} ${city} ${state}&electionId=${id}`)
+
+
+    console.log('Starting to fetch voterinfo now.');
+    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/voterinfo?key=${api_key}&address=${address} ${city} ${state}&electionId=${id}`)
+
     console.log("got info")
     const data = await api_call.json()
 		console.log(data)
@@ -140,7 +152,10 @@ class VoterHomePage extends Component {
   }
 
 	async getPollingInfo() {
-    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/voterinfo?key=${api_key}&address=${street_address} ${city} ${state}&electionId=${id}`)
+
+
+    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/voterinfo?key=${api_key}&address=${address} ${city} ${state}&electionId=${id}`)
+
     const data = await api_call.json()
 		console.log("got info", data)
     console.log(data);
@@ -242,7 +257,7 @@ class VoterHomePage extends Component {
 	}
 
 	render() {
-
+console.log('this.props',this.props);
 		return(
 
 			<div >
@@ -297,10 +312,46 @@ class VoterHomePage extends Component {
 				}
 
 
-</div>);
+				<div>
+					<h1 className="Title1">Your U.S. Congressional Districts</h1>
+					<Iframe
+						url="https://www.govtrack.us/congress/members/embed/mapframe?&bounds=-102.331,32.928,-94.205,28.104"
+						width="600"
+						height="500"
+						frameborder="0"
+						scrolling="no"
+						marginheight="0"
+						marginwidth="0"
+						id="myId"
+						className="myClassname"
+						display="initial"
+						position="relative"
+						allowFullScreen/>
+				</div>
+
+
+</div>
+);
 
 	}
 
 
 }
-export default VoterHomePage;
+const mapStateToProps = state => {
+	console.log('state in mapstatetoprops', state);
+	return {
+		address: state.address,
+		city: state.city,
+		state: state.state,
+
+	}
+}
+// const mapActionsToProps =
+
+const mapDispatchToProps = dispatch => {
+	return bindActionCreators({
+		userAddress, userCity, userState
+
+	})
+}
+export default connect(mapStateToProps, mapDispatchToProps)(VoterHomePage)
