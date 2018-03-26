@@ -33,7 +33,6 @@ class Button extends React.Component {
 				<button onClick={() => {this.handleClickElections();}}>Elections</button>
 				<button onClick={() => {this.handleClickGetVoterInfo();}}>Voter Information</button>
 				<button onClick={() => {this.handleClickRepresentatives();}}>Representatives</button>
-
 				<button onClick={() => {this.handleClickPollingInfo();}}>Polling Information</button>
 			</div>
 		);
