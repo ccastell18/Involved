@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import Form from '../component/form'
-
+import axios from 'axios';
 import Election from '../component/smart_buttons/elections'
 import Button from '../component/buttons'
 import Representatives from '../component/smart_buttons/representatives'
@@ -14,9 +14,9 @@ import { userAddress, userCity, userState } from '../store/action/index.js'
 import Iframe from 'react-iframe';
 import store from '../store/store.js'
 const api_key = 'AIzaSyBgfiDlTi-VtbLrQ0CjcV6z2KbVX_h7kwA';
-const address = userAddress
-const city = userCity
-const state = userState
+const address = "7201 Wood Hollow Drive"
+const city = "Austin"
+const state = "tx"
 const id = '2000';
 // data.address,
 // data.city,
@@ -28,7 +28,7 @@ class VoterHomePage extends Component {
     super(props)
     this.state = {
 
-			street_address: null,
+			address: null,
 			city: null,
 			state: null,
 
@@ -64,7 +64,7 @@ class VoterHomePage extends Component {
 	axios.get(`https://www.googleapis.com/civicinfo/v2/elections?key=` + api_key)
 		.then(function(data){
 			console.log(data)
-			axios.get(`https://www.googleapis.com/civicinfo/v2/representatives?key=${api_key}&address=${street_address} ${city} ${state}`)
+			axios.get(`https://www.googleapis.com/civicinfo/v2/representatives?key=${api_key}&address=${address} ${city} ${state}`)
 			.then(function(representatives){
 				data.data.elections.forEach( election =>{
 						representatives.data.offices.forEach(office => {
@@ -111,13 +111,15 @@ class VoterHomePage extends Component {
         office.officialIndices.forEach(officialIndex =>{
         newRep.office= office.name;
         newRep.official=data.officials[officialIndex];
-        reps.push(newRep);
+				if(!reps.includes(newRep.name)){
+        	reps.push(newRep);
+				}
       });
     })
     console.log("reps",reps)
     this.setState({
-      representatives: reps,
-    });
+      representatives: reps
+    })
   }
 
   async getVoterInfo() {
@@ -137,7 +139,10 @@ class VoterHomePage extends Component {
 					let rep = {}
 					rep.office = contest.office;
 					rep.candidate = candidate;
+
+
 					vote.push(rep)
+
 					})
 				}
 			})
@@ -216,6 +221,7 @@ class VoterHomePage extends Component {
 					image={representative.official.photoUrl}
 					/>
 				);
+
       })
     }
 		else{
