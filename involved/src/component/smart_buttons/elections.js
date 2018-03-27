@@ -14,6 +14,7 @@ const Election = (props) =>{
 			<p>{props.name}</p>
 			<p> Election Day: {props.electionDay}</p>
 			<button>Get Candidates</button>
+			
 			<br/>
 		</Wrapper>
 	);
