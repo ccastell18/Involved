@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+// import { connect } from 'react-redux'
 // import Form from '../component/form.js';
 // import Form2 from '../component/login_form'
 
@@ -17,6 +18,7 @@ import Tech from '../component/navbar/tech';
 import styled from 'styled-components'
 import FAQ from '../component/navbar/FAQ'
 import Map from '../component/smart_buttons/map'
+// import { Redirect } from 'react-router';
 const Wrapper = styled.div`
 background-color: lightgrey;
 	min-height: 100vh;
@@ -58,6 +60,4 @@ class App extends Component{
     );
   }
 };
-
-
 export default App
