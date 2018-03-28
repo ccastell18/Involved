@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import LadyLiberty from './lady_liberty.jpg';
 
 const Image = styled.img`
-width:40vw;
+width:30vw;
 height:80vh;
-padding:7px;
+padding-right:7px;
 `;
 const FAQ = () => {
 	return (

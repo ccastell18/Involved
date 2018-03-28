@@ -4,12 +4,12 @@ import axios from 'axios';
 import styled from 'styled-components';
 import Party from './pics/party.jpeg';
 import { bindActionCreators } from 'redux';
-
+import { Link } from 'react-router-dom';
 import { userInfo } from '../../store/action/index.js';
 import { connect } from 'react-redux';
-import store from '../../store/store.js';
-import { Redirect } from 'react-router';
-import { Link } from 'react-router-dom';
+// import store from '../../store/store.js';
+// import { Redirect } from 'react-router';
+// import { Link } from 'react-router-dom';
 
 const Image = styled.img`
 width: 300px;
@@ -110,7 +110,7 @@ class Form extends Component {
 				<div className="row">
 					<div className="col-sm-3">
 					</div>
-					<div className="col-sm-5">
+					<div className="col-sm-4">
 						<div>
 							<div className="row">
 								<div className="col-med-4">
@@ -144,8 +144,8 @@ class Form extends Component {
 
 
 
-										<button className="btn" type="submit">Submit
-
+										<button className="btn" type="submit">
+											<Link to="/VoterHomePage">Submit</Link>
 										</button>
 
 
@@ -155,7 +155,7 @@ class Form extends Component {
 						</div>
 					</div>
 					<div className="col-sm-4">
-						<Image src={Party}/>
+						<Image src={Party}></Image>
 					</div>
 				</div>
 

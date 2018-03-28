@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+
+
 const Election = (props) =>{
 
 	const Wrapper= styled.div`
@@ -14,7 +16,7 @@ const Election = (props) =>{
 			<p>{props.name}</p>
 			<p> Election Day: {props.electionDay}</p>
 			<button>Get Candidates</button>
-			
+
 			<br/>
 		</Wrapper>
 	);

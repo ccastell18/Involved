@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../container/App.css';
 
 class Button extends React.Component {
 	constructor(props){
@@ -31,10 +31,10 @@ class Button extends React.Component {
 	render(){
 		return (
 			<div >
-				<button onClick={() => {this.handleClickElections();}}>Elections</button>
-				<button onClick={() => {this.handleClickGetVoterInfo();}}>Voter Information</button>
-				<button onClick={() => {this.handleClickRepresentatives();}}>Representatives</button>
-				<button onClick={() => {this.handleClickPollingInfo();}}>Polling Information</button>
+				<button  className="elections" onClick={() => {this.handleClickElections();}}>Elections</button>
+				<button className="Voter"  onClick={() => {this.handleClickGetVoterInfo();}}>Voter Information</button>
+				<button className="Representatives"  onClick={() => {this.handleClickRepresentatives();}}>Representatives</button>
+				<button className="Polling" onClick={() => {this.handleClickPollingInfo();}}>Polling Information</button>
 			</div>
 		);
 	}

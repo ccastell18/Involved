@@ -29,3 +29,63 @@
 	 cursor: pointer;
 
 }
+.btn{
+	background-color: slategray;
+	 border: 1px solid black;
+	 color: white;
+	 padding: 10px 25px;
+	 text-align: center;
+	 text-decoration: none;
+	 display: inline-block;
+	 margin: 4px 2px;
+	 cursor: pointer;
+
+}
+.elections{
+	background-color: slategray;
+	 border: 1px solid black;
+	 color: white;
+	 padding: 10px 25px;
+	 text-align: center;
+	 text-decoration: none;
+	 display: inline-block;
+	 margin: 4px 2px;
+	 cursor: pointer;
+}
+.Voter{
+	background-color: slategray;
+	 border: 1px solid black;
+	 color: white;
+	 padding: 10px 25px;
+	 text-align: center;
+	 text-decoration: none;
+	 display: inline-block;
+	 margin: 4px 2px;
+	 cursor: pointer;
+
+}
+.Representatives{
+	background-color: slategray;
+	 border: 1px solid black;
+	 color: white;
+	 padding: 10px 25px;
+	 text-align: center;
+	 text-decoration: none;
+	 display: inline-block;
+	 margin: 4px 2px;
+	 cursor: pointer;
+
+}
+.Polling{
+	background-color: slategray;
+	 border: 1px solid black;
+	 color: white;
+	 padding: 10px 25px;
+	 text-align: center;
+	 text-decoration: none;
+	 display: inline-block;
+	 margin: 4px 2px;
+	 cursor: pointer;
+
+
+}

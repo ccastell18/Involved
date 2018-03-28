@@ -41,12 +41,15 @@
 .Cat{
 	display: flex;
 	border: 1px solid slategray;
+	padding-top: 3px;
+	margin-top: 10px;
 
 }
 .Faq{
 	border: 1px solid slategray;
 	height: 80vh;
 	width: 40 vw;
+	/* padding-left: 10%; */
 	padding-bottom: 6%;
 	display:flex;
 }
@@ -54,10 +57,11 @@
 	text-decoration: underline;
 }
 .termsOfUse{
-	border: 10px solid slategray;
+	border: 1px solid slategray;
 	height: 100%;
-
-	padding-left: 10%;
-	padding-right: 10%;
+margin-left: 10%;
+margin-right: 10%;
+	/* padding-left: 10%;
+	padding-right: 10%; */
 
 }

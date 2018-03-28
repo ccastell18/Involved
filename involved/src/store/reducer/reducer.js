@@ -5,9 +5,9 @@ import { USER_INFO } from '../action/actionTypes';
 const initalState = {
 
 	userCredentials : {
-		address:'',
-		city: '',
-		state:''
+		address:'1515 wickersham',
+		city: 'Austin',
+		state:'Texas'
 	}
 
 };

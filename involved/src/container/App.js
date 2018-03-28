@@ -16,7 +16,7 @@ import styled from 'styled-components'
 import FAQ from '../component/navbar/FAQ'
 import Map from '../component/smart_buttons/map'
 
-import { Link }  from 'react-router-dom'
+// import { Link }  from 'react-router-dom'
 
 const Wrapper = styled.div`
 background-color: lightgrey;

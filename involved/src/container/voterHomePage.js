@@ -15,12 +15,12 @@ import { bindActionCreators } from 'redux'
 
 import { userInfo } from '../store/action/index.js'
 import Iframe from 'react-iframe';
-import store from '../store/store.js'
+// import store from '../store/store.js'
 // import mapStateToProps from '../component/registration/form.js'
 const api_key = 'AIzaSyBgfiDlTi-VtbLrQ0CjcV6z2KbVX_h7kwA';
-const address = '1515 wickersham'
-const city = 'austin'
-const state = 'texas'
+const address = ''
+const city = ''
+const state = ''
 const id = '2000';
 
 
@@ -31,7 +31,7 @@ class VoterHomePage extends Component {
 
 
     this.state = {
-			toggle: false,
+			showMap: false,
 
 			address: null,
 			city: null,
@@ -261,7 +261,7 @@ class VoterHomePage extends Component {
 			return this.state.pollInfo.map( polling => {
 				return (<Polling
 
-					key={polling.address.locationName}
+					key={polling.address.line1}
 
 					locationName={polling.address.locationName}
 					line1={polling.address.line1}
@@ -297,35 +297,28 @@ class VoterHomePage extends Component {
 	}
 
 	render() {
-
-console.log('invhp', this.props.userCredentials)
-// console.log('invhp', this.props.userCredentials[1])
-// console.log('invhp', this.props.userCredentials[4])
-console.log('hello world',state.userInfo);
-
-console.log('this.props',this.props);
-
 		return(
 
 			<div >
-				<Button className="VHP"
+
+
+				<div id="smart_buttons">
+					<Button className="VHP"
 					showItems={this.showItems}
 					getElections={this.getElections}
 					getRepresentatives={this.getRepresentatives}
 					getVoterInfo={this.getVoterInfo}
 					getPollingInfo={this.getPollingInfo}
-
-
-
 					/>
-				<Form />
+				</div>
+				<div className="row">
 
-
-
-
+					<Form />
+				</div>
+							<div className="row">
 				{
 					this.state.showElections &&
-						(
+					(
 							<div className="container-fluid">
 								<div className="row">
 									{this.displayElections()}
@@ -358,57 +351,47 @@ console.log('this.props',this.props);
 					(
 						<div className="container-fluid">
 							<div className="row">
-
-								{
-									this.state.pollInfo !== undefined ? this.displayPollingInfo() : (
-									<p> no info avilable</p>
-									)
-								}
+								{this.state.pollInfo !== undefined ? this.displayPollingInfo() : (
+									<p> No Info Avialable.
+										<button className="VHP"><a href="https://www.vote.org/polling-place-locator/">Other Sources</a></button>
+									</p>
+								)
+							}
 							</div>
 
 						</div>
 					)
 				}
-				<button onClick={this._showMap.bind(null, true)}>show</button>
-				{
+</div>
 
-					this.state.showMap && (
-						<div>
-				<h1 className="Title1">Your U.S. Congressional Districts</h1>
-					<Iframe
-						url="https://www.govtrack.us/congress/members/embed/mapframe?&bounds=-102.331,32.928,-94.205,28.104"
-						width="600"
-						height="500"
-						frameborder="0"
-						scrolling="no"
-						marginheight="0"
-						marginwidth="0"
-						id="myId"
-						className="myClassname"
-						display="initial"
-						position="relative"
-						allowFullScreen/>
-				</div>
-			) }
+<div className="row">
+	<button className="btn" onClick={this._showMap.bind(null, true)}>Show Map</button>
+	<button className="btn" onClick={this._showMap.bind(null,false)}>Hide Map</button>
+	{
+		this.state.showMap && (
+			<div>
+	<h1 className="Title1">Your U.S. Congressional Districts</h1>
+		<Iframe
+			url="https://www.govtrack.us/congress/members/embed/mapframe?&bounds=-102.331,32.928,-94.205,28.104"
+			width="600"
+			height="500"
+			frameborder="0"
+			scrolling="no"
+			marginheight="0"
+			marginwidth="0"
+			id="myId"
+			className="myClassname"
+			display="initial"
+			position="relative"
+			allowFullScreen/>
+	</div>
+) }
 
 
 
-				<div>
-					<h1 className="Title1">Your U.S. Congressional Districts</h1>
-					<Iframe
-						url="https://www.govtrack.us/congress/members/embed/mapframe?&bounds=-102.331,32.928,-94.205,28.104"
-						width="600"
-						height="500"
-						frameborder="0"
-						scrolling="no"
-						marginheight="0"
-						marginwidth="0"
-						id="myId"
-						className="myClassname"
-						display="initial"
-						position="relative"
-						allowFullScreen/>
-				</div>
+
+</div>
+
 
 
 </div>

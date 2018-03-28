@@ -16,18 +16,18 @@ vertical-align: middle;
    padding-bottom: 15px;
 `;
 const Representatives = (props) =>{
-    let image = props.image ? props.image : 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/american-flag-vertical-linda-mears.jpg';
+	let image = props.image ? props.image : 'https://upload.wikimedia.org/wikipedia/commons/0/08/Vertical_United_States_Flag.svg';
 
-    return(
-        <Wrapper className="col-md-3 repBoxes">
-            <Image src={image}/>
-            <p>Office Name: {props.office}</p>
-            <p>Name: {props.name}</p>
-            <p>Party: {props.party}</p>
-            <p>Phone Number: {props.phones}</p>
-            <p>Website: {props.urls} </p>
-        </Wrapper>
-    );
+	return(
+		<Wrapper className="col-md-3 repBoxes">
+			<Image src={image}/>
+			<p>Office Name: {props.office}</p>
+			<p>Name: {props.name}</p>
+			<p>Party: {props.party}</p>
+			<p>Phone Number: {props.phones}</p>
+			<a href={props.urls}>{props.urls}</a>
+		</Wrapper>
+	);
 };
 
 export default Representatives;

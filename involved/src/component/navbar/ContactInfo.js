@@ -10,6 +10,13 @@ align: right;
     height: 200px;
     padding-bottom: 15px;
 `;
+const Image2 = styled.img`
+align: left;
+    width: 150px;
+    height: 200px;
+    padding-bottom: 15px;
+		margin-top: -31%
+`;
 
 const ContactInfo = () => {
 
@@ -21,7 +28,8 @@ const ContactInfo = () => {
 			<div className="row">
 				<div className="col-xs-6 col-sm-6">
 					<div className="Cat">
-						<div>James Lockwood<br/>
+						<div>James Lockwood
+							<br/>
 							<a href="mailto:Ksjjl05@gmail.com">email:	Ksjjl05@gmail.com</a>
 							<br/>
 							<a href="https://github.com/jameslock86">github: 	https://github.com/jameslock86</a>
@@ -37,6 +45,13 @@ const ContactInfo = () => {
 						</div>
 					</div>
 				</div>
+
+
+
+
+
+
+
 				<div className="col-xs-6 col-sm-6"><Image src={James}/>
 				</div>
 
@@ -63,7 +78,7 @@ const ContactInfo = () => {
 
 					</div>
 				</div>
-				<div className="col-xs-6 col-sm-6"><Image src={Chris}/>
+				<div className="col-xs-6 col-sm-6"><Image2 src={Chris}/>
 				</div>
 			</div>
 
