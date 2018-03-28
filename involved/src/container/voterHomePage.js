@@ -40,6 +40,8 @@ class VoterHomePage extends Component {
 
 
 
+
+
 			showItems: false,
 			showElections: false,
 			showReps: false,
@@ -56,6 +58,7 @@ class VoterHomePage extends Component {
 			pollInfo: [],
 
 			id: [],
+			voterData: [],
     };
 
 
@@ -65,10 +68,11 @@ class VoterHomePage extends Component {
     this.getRepresentatives = this.getRepresentatives.bind(this);
     this.getVoterInfo= this.getVoterInfo.bind(this);
 		this.getPollingInfo= this.getPollingInfo.bind(this);
+
 }
 
-	componentDidMount(){
 
+	componentDidMount(){
 	let elecId = []
 	console.log(elecId)
 	console.log('MOUNTED')
@@ -84,17 +88,14 @@ class VoterHomePage extends Component {
 									elecId.push(election.id)
 									console.log(elecId)
 								}
-
 							 }
 						})
 				})
-
 			})
 		})
 		this.setState({
 			id: elecId
 		})
-
 }
 	async getElections() {
     console.log('Starting to fetch elections now.');
@@ -141,15 +142,18 @@ class VoterHomePage extends Component {
 
 
   async getVoterInfo() {
-
-
+		let dataId = {}
+		let dataId2 = []
     console.log('Starting to fetch voterinfo now.');
+
 
     const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/voterinfo?key=${api_key}&address=${this.props.userCredentials.address} ${this.props.userCredentials.city} ${this.props.userCredentials.state}&electionId=${id}`)
 
+
     console.log("got info")
     const data = await api_call.json()
-		console.log(data)
+			dataId.election = data.election;
+			dataId2.push(dataId)
 		let vote = [];
 		if (!data.error) {
 			data.contests.forEach((contest) =>{
@@ -158,27 +162,25 @@ class VoterHomePage extends Component {
 					let rep = {}
 					rep.office = contest.office;
 					rep.candidate = candidate;
-
-
 					vote.push(rep)
-
 					})
 				}
 			})
-
 			console.log('voter info here', vote)
+			console.log(dataId2)
 				this.setState({
+				voterData: dataId2,
 	      voterInfo: vote
 			});
-	    console.log('New State', this.state);
 		}
-
   }
 
 	async getPollingInfo() {
 
 
+
     const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/voterinfo?key=${api_key}&address=${this.props.userCredentials.address} ${this.props.userCredentials.city} ${this.props.userCredentials.state}&electionId=${id}`)
+
 
     const data = await api_call.json()
 		console.log("got info", data)
@@ -192,13 +194,18 @@ class VoterHomePage extends Component {
     if (this.state.voterInfo.length >0) {
       return this.state.voterInfo.map( voter => {
 
-        return (<VoterInfo
-					key={voter.candidate.name}
-					office={voter.office}
-					name={voter.candidate.name}
-					party={voter.candidate.party}
-					candidateUrl={voter.candidate.candidateUrl}/>
-				);
+				if(this.state.voterData.length > 0){
+					return this.state.voterData.map(id => {
+						return (<VoterInfo
+							key={voter.candidate.name}
+							electionId={id.election.id}
+							title={voter.office}
+							name={voter.candidate.name}
+							party={voter.candidate.party}
+							candidateUrl={voter.candidate.candidateUrl}/>
+					)
+					})
+				}
 
       })
     }
@@ -219,7 +226,6 @@ class VoterHomePage extends Component {
 								key={election.id}
 								name={election.name}
 								electionDay={election.electionDay}/>
-
 							);
 						}
 					})
@@ -232,7 +238,6 @@ class VoterHomePage extends Component {
       return (<p>No Elections scheduled at this time!</p>);
     }
   }
-
 	displayRepresentatives() {
     if (this.state.representatives.length > 0) {
 
@@ -246,7 +251,6 @@ class VoterHomePage extends Component {
 					image={representative.official.photoUrl}
 					/>
 				);
-
       })
     }
 		else{
