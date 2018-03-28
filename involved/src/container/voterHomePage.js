@@ -16,11 +16,11 @@ import { bindActionCreators } from 'redux'
 import { userInfo } from '../store/action/index.js'
 import Iframe from 'react-iframe';
 import store from '../store/store.js'
-
+// import mapStateToProps from '../component/registration/form.js'
 const api_key = 'AIzaSyBgfiDlTi-VtbLrQ0CjcV6z2KbVX_h7kwA';
-const address = ''
-const city = ''
-const state = ''
+const address = '1515 wickersham'
+const city = 'austin'
+const state = 'texas'
 const id = '2000';
 
 
@@ -28,11 +28,15 @@ class VoterHomePage extends Component {
 
 	constructor(props){
     super(props)
+
+
     this.state = {
+			toggle: false,
 
 			address: null,
 			city: null,
 			state: null,
+
 
 
 
@@ -43,21 +47,25 @@ class VoterHomePage extends Component {
 			showPollingInfo: false,
 			showMap: false,
 
+
 			voterInfoId: [],
+
       elections: [],
       representatives: [],
     	voterInfo: [],
 			pollInfo: [],
+
 			id: [],
     };
+
+
 
 		this.showItems = this.showItems.bind(this);
     this.getElections = this.getElections.bind(this);
     this.getRepresentatives = this.getRepresentatives.bind(this);
     this.getVoterInfo= this.getVoterInfo.bind(this);
 		this.getPollingInfo= this.getPollingInfo.bind(this);
-
-  }
+}
 
 	componentDidMount(){
 
@@ -104,14 +112,13 @@ class VoterHomePage extends Component {
 
   async getRepresentatives(e) {
 
-		console.log('props in api call', this.props);
-		const userCredentials = this.props.userCredentials
-    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/representatives?key=${api_key}&address=${userCredentials.address} ${userCredentials.city} ${userCredentials.state}`)
+		console.log('props in api call', this.props.userCredentials);
+		// const userCredentials = this.props.userCredentials
+		console.log('inside of vhp',this.props.userCredentials);
+    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/representatives?key=${api_key}&address=${this.props.userCredentials.address} ${this.props.userCredentials.city} ${this.props.userCredentials.state}`)
 
     const data = await api_call.json()
     console.log(data)
-    let div = Object.keys(data.divisions)
-    console.log(div)
     let reps = []
     data.offices.forEach(office => {
       let newRep = {}
@@ -125,15 +132,20 @@ class VoterHomePage extends Component {
     })
     console.log("reps",reps)
     this.setState({
-      representatives: reps
-    })
-  }
+
+      representatives: reps,
+    });
+}
+
+
+
 
   async getVoterInfo() {
 
 
     console.log('Starting to fetch voterinfo now.');
-    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/voterinfo?key=${api_key}&address=${address} ${city} ${state}&electionId=${id}`)
+
+    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/voterinfo?key=${api_key}&address=${this.props.userCredentials.address} ${this.props.userCredentials.city} ${this.props.userCredentials.state}&electionId=${id}`)
 
     console.log("got info")
     const data = await api_call.json()
@@ -166,8 +178,7 @@ class VoterHomePage extends Component {
 	async getPollingInfo() {
 
 
-    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/voterinfo?key=${api_key}&address=${address} ${city} ${state}&electionId=${id}`)
-
+    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/voterinfo?key=${api_key}&address=${this.props.userCredentials.address} ${this.props.userCredentials.city} ${this.props.userCredentials.state}&electionId=${id}`)
 
     const data = await api_call.json()
 		console.log("got info", data)
@@ -180,13 +191,14 @@ class VoterHomePage extends Component {
   displayVoterInfo() {
     if (this.state.voterInfo.length >0) {
       return this.state.voterInfo.map( voter => {
-							return (<VoterInfo
-								key={voter.candidate.name}
-								title={voter.office}
-								name={voter.candidate.name}
-								party={voter.candidate.party}
-								candidateUrl={voter.candidate.candidateUrl}/>
-							);
+
+        return (<VoterInfo
+					key={voter.candidate.name}
+					office={voter.office}
+					name={voter.candidate.name}
+					party={voter.candidate.party}
+					candidateUrl={voter.candidate.candidateUrl}/>
+				);
 
       })
     }
@@ -194,6 +206,7 @@ class VoterHomePage extends Component {
       return (<p>No Information to present.</p>);
     }
   }
+
 
   displayElections() {
     if (this.state.elections.length > 0) {
@@ -212,6 +225,7 @@ class VoterHomePage extends Component {
 					})
 				}
 
+
       })
     }
 		else {
@@ -221,8 +235,11 @@ class VoterHomePage extends Component {
 
 	displayRepresentatives() {
     if (this.state.representatives.length > 0) {
-      return this.state.representatives.map( representative => {
+
+      return this.state.representatives.map( (representative, index) => {
+
         return (<Representatives
+					key={index}
 					office={representative.office} 						 name={representative.official.name} party={representative.official.party}
         	phones={representative.official.phones}
         	urls={representative.official.urls}
@@ -243,7 +260,9 @@ class VoterHomePage extends Component {
 			console.log('here2');
 			return this.state.pollInfo.map( polling => {
 				return (<Polling
-					key={polling.address.line1}
+
+					key={polling.address.locationName}
+
 					locationName={polling.address.locationName}
 					line1={polling.address.line1}
 					city={polling.address.city}
@@ -278,7 +297,14 @@ class VoterHomePage extends Component {
 	}
 
 	render() {
+
+console.log('invhp', this.props.userCredentials)
+// console.log('invhp', this.props.userCredentials[1])
+// console.log('invhp', this.props.userCredentials[4])
+console.log('hello world',state.userInfo);
+
 console.log('this.props',this.props);
+
 		return(
 
 			<div >
@@ -328,12 +354,16 @@ console.log('this.props',this.props);
 					)
 				}
 				{
-					this.state.showPollingInfo &&
+					(this.state.showPollingInfo)&&
 					(
 						<div className="container-fluid">
 							<div className="row">
 
-								{this.displayPollingInfo()}
+								{
+									this.state.pollInfo !== undefined ? this.displayPollingInfo() : (
+									<p> no info avilable</p>
+									)
+								}
 							</div>
 
 						</div>
@@ -388,11 +418,13 @@ console.log('this.props',this.props);
 
 
 }
+
 const mapStateToProps = state => {
 	console.log('state in mapstatetoprops', state);
 	return {
 
-		userCredentials: state.userInfo[0],
+		userCredentials: state.reducer.userCredentials,
+
 
 
 	}

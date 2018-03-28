@@ -24,7 +24,7 @@ const ContactInfo = () => {
 						<div>James Lockwood<br/>
 							<a href="mailto:Ksjjl05@gmail.com">email:	Ksjjl05@gmail.com</a>
 							<br/>
-							<a href="https://github.com/jameslock86">github:	https://github.com/jameslock86</a>
+							<a href="https://github.com/jameslock86">github: 	https://github.com/jameslock86</a>
 							<br/>
 							<a href="https://www.linkedin.com/in/james-lockwood/">linkedIn:
 		https://www.linkedin.com/in/james-lockwood/</a>

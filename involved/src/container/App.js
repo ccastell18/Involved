@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-// import { connect } from 'react-redux'
-// import Form from '../component/form.js';
-// import Form2 from '../component/login_form'
 
-// import VoterInfo from '../component/voter_info'
+
 import Footer from '../component/navbar/footer'
 import { Route, Switch } from 'react-router-dom';
 import Form from '../component/registration/form';
@@ -18,7 +15,9 @@ import Tech from '../component/navbar/tech';
 import styled from 'styled-components'
 import FAQ from '../component/navbar/FAQ'
 import Map from '../component/smart_buttons/map'
-// import { Redirect } from 'react-router';
+
+import { Link }  from 'react-router-dom'
+
 const Wrapper = styled.div`
 background-color: lightgrey;
 	min-height: 100vh;

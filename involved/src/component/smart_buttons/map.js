@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Iframe from 'react-iframe';
 import styled from 'styled-components';
-
+import { Link } from 'react-router-dom';
 
 
 const Wrapper = styled.div``;
@@ -33,7 +33,7 @@ class Map extends Component{
 
 				<div>
 					<button className="btn">
-						<a href="/VoterHomePage">More Information</a>
+						<Link to="/VoterHomePage">More Information</Link>
 					</button>
 
 				</div>
