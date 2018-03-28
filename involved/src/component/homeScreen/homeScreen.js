@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
-import './homeScreen.css';
+
+// import './homeScreen.css';
 import { Link } from 'react-router-dom';
+
+import './landing.css';
+
+
 class HomeScreen extends Component{
 
 

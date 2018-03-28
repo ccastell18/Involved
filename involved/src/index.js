@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
+
 import reducer from './store/reducer/reducer.js';
 // import{ userAddress, userCity, userState } from './store/action/index.js';
 import { loadState, saveState } from './localStorage.js';
@@ -28,7 +29,6 @@ store.subscribe(throttle(() => {
 	});
 
 }, 1000));
-
 
 
 

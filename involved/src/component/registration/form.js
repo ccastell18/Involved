@@ -4,11 +4,13 @@ import axios from 'axios';
 import styled from 'styled-components';
 import Party from './pics/party.jpeg';
 import { bindActionCreators } from 'redux';
+
 import { userInfo } from '../../store/action/index.js';
 import { connect } from 'react-redux';
 import store from '../../store/store.js';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
+
 const Image = styled.img`
 width: 300px;
 height: 400px;
@@ -72,6 +74,16 @@ class Form extends Component {
 		console.log('STATE', localStorage.getItem('data',this.props.data));
 		this.props.userInfo(data);
 
+
+
+
+
+
+		//
+		// console.log('look at me!',this.props.userAddress(data.address));
+		// console.log('look at me!2',	this.props.userCity(data.city));
+		// console.log('look at me!3',this.props.userState(data.state));
+
 		axios.post('http://localhost:3000/user/post', data).then((result) => {
 			// alert('Posted:' + result);
 			let clearedData = {
@@ -131,7 +143,9 @@ class Form extends Component {
 										<br/>
 
 
+
 										<button className="btn" type="submit">Submit
+
 										</button>
 
 
@@ -156,6 +170,7 @@ class Form extends Component {
 	}
 }
 
+
 function mapStateToProps(state){
 	return {
 		users: state.userInfo,
@@ -167,8 +182,10 @@ const mapDispatchToProps = dispatch => {
 	return bindActionCreators({
 		userInfo
 
+
 	}, dispatch);
 };
+
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form);

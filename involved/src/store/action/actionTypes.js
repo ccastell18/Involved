@@ -4,4 +4,6 @@ export const AUTH_FAIL = 'AUTH_FAIL';
 
 
 
+
 export const USER_INFO = 'USER_INFO';
+
