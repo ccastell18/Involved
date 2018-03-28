@@ -19,7 +19,7 @@ class HomeScreen extends Component{
 					</p>
 					<br />
 					<button	className="btn"><a href="/form">Register</a></button>
-					<button className="btn"><a href="/Auth">Login Here</a></button>
+					
 				</section>
 			</div>
 

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+
 // import Form from '../component/form'
 import axios from 'axios';
+
 import Election from '../component/smart_buttons/elections'
 import Button from '../component/buttons'
 import Representatives from '../component/smart_buttons/representatives'
@@ -10,17 +12,17 @@ import './App.css'
 import Form  from '../component/registration/form.js'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { userAddress, userCity, userState } from '../store/action/index.js'
+
+import { userInfo } from '../store/action/index.js'
 import Iframe from 'react-iframe';
 import store from '../store/store.js'
+
 const api_key = 'AIzaSyBgfiDlTi-VtbLrQ0CjcV6z2KbVX_h7kwA';
-const address = "7201 Wood Hollow Drive"
-const city = "Austin"
-const state = "tx"
+const address = ''
+const city = ''
+const state = ''
 const id = '2000';
-// data.address,
-// data.city,
-// data.state
+
 
 class VoterHomePage extends Component {
 
@@ -39,6 +41,7 @@ class VoterHomePage extends Component {
 			showReps: false,
 			showVotorInfo: false,
 			showPollingInfo: false,
+			showMap: false,
 
 			voterInfoId: [],
       elections: [],
@@ -100,7 +103,11 @@ class VoterHomePage extends Component {
   }
 
   async getRepresentatives(e) {
-    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/representatives?key=${api_key}&address=${address} ${city} ${state}`)
+
+		console.log('props in api call', this.props);
+		const userCredentials = this.props.userCredentials
+    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/representatives?key=${api_key}&address=${userCredentials.address} ${userCredentials.city} ${userCredentials.state}`)
+
     const data = await api_call.json()
     console.log(data)
     let div = Object.keys(data.divisions)
@@ -160,6 +167,7 @@ class VoterHomePage extends Component {
 
 
     const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/voterinfo?key=${api_key}&address=${address} ${city} ${state}&electionId=${id}`)
+
 
     const data = await api_call.json()
 		console.log("got info", data)
@@ -254,11 +262,18 @@ class VoterHomePage extends Component {
 		let showReps = (type === 'reps') ? true : false;
 		let showVotorInfo = (type === 'voter') ? true : false;
 		let showPollingInfo = (type === 'polling') ? true : false;
+
 		this.setState({
 			showElections,
 			showReps,
 			showVotorInfo,
 			showPollingInfo,
+
+		})
+	}
+	_showMap = bool =>{
+		this.setState({
+			showMap: bool
 		})
 	}
 
@@ -273,7 +288,14 @@ console.log('this.props',this.props);
 					getRepresentatives={this.getRepresentatives}
 					getVoterInfo={this.getVoterInfo}
 					getPollingInfo={this.getPollingInfo}
+
+
+
 					/>
+				<Form />
+
+
+
 
 				{
 					this.state.showElections &&
@@ -313,9 +335,32 @@ console.log('this.props',this.props);
 
 								{this.displayPollingInfo()}
 							</div>
+
 						</div>
 					)
 				}
+				<button onClick={this._showMap.bind(null, true)}>show</button>
+				{
+
+					this.state.showMap && (
+						<div>
+				<h1 className="Title1">Your U.S. Congressional Districts</h1>
+					<Iframe
+						url="https://www.govtrack.us/congress/members/embed/mapframe?&bounds=-102.331,32.928,-94.205,28.104"
+						width="600"
+						height="500"
+						frameborder="0"
+						scrolling="no"
+						marginheight="0"
+						marginwidth="0"
+						id="myId"
+						className="myClassname"
+						display="initial"
+						position="relative"
+						allowFullScreen/>
+				</div>
+			) }
+
 
 
 				<div>
@@ -346,9 +391,9 @@ console.log('this.props',this.props);
 const mapStateToProps = state => {
 	console.log('state in mapstatetoprops', state);
 	return {
-		address: state.address,
-		city: state.city,
-		state: state.state,
+
+		userCredentials: state.userInfo[0],
+
 
 	}
 }
@@ -356,7 +401,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return bindActionCreators({
-		userAddress, userCity, userState
+
+		userInfo
+
 
 	})
 }
