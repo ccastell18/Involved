@@ -1,48 +1,34 @@
 // import Redux from 'redux';
 
-import { ADDRESS, CITY, STATE } from '../action/actionTypes';
+
+import { USER_INFO } from '../action/actionTypes';
 const initalState = {
-	address:'',
-	city: '',
-	state:''
+
+	userCredentials : {
+		address:'',
+		city: '',
+		state:''
+	}
+
 };
 
 
-const reducer = (state = initalState, action) =>{
+const reducer = (state = initalState ,action) =>{
 	switch(action.type)
 	{
 
-	case ADDRESS:
+
+	case USER_INFO:
+
+
 		console.log('hello2', action.payload);
-		return [
-			...state,
-			{
-				address: action.payload
+		return Object.assign({}, state, {
+			userCredentials: action.payload
+		});
+	default:
+		return state;
 
-			}
-		];
-	case CITY:
-		console.log('hello3', action.payload);
-		return [
-
-			...state,
-			{
-				city: action.payload
-			}
-		];
-	case STATE:
-		console.log('hello4', action.payload);
-		return [
-
-			...state,
-			{
-				state: action.payload
-			}
-		];
-
-	
 	}
 
-	return state;
 };
 export default reducer;

@@ -4,10 +4,13 @@ import axios from 'axios';
 import styled from 'styled-components';
 import Party from './pics/party.jpeg';
 import { bindActionCreators } from 'redux';
-import { userAddress, userCity, userState } from '../../store/action/index.js';
+
+import { userInfo } from '../../store/action/index.js';
 import { connect } from 'react-redux';
 import store from '../../store/store.js';
 import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
+
 const Image = styled.img`
 width: 300px;
 height: 400px;
@@ -55,6 +58,7 @@ class Form extends Component {
 	}
 
 	handleSubmit(event) {
+		// console.log('submit handled?');
 		event.preventDefault();
 
 		let data = {
@@ -65,17 +69,20 @@ class Form extends Component {
 			state: this.state.state,
 			zipcode: this.state.zipcode
 		};
-
-		console.log('look at me!',this.props.userAddress(data.address));
-		console.log('look at me!2',	this.props.userCity(data.city));
-		console.log('look at me!3',this.props.userState(data.state));
-		// console.log(
-		// 	data.address,
-		// 	data.city,
-		// 	data.state);
+		console.log('in handle submit',this.props.userInfo(data));
+		localStorage.getItem('data', data);
+		console.log('STATE', localStorage.getItem('data',this.props.data));
+		this.props.userInfo(data);
 
 
 
+
+
+
+		//
+		// console.log('look at me!',this.props.userAddress(data.address));
+		// console.log('look at me!2',	this.props.userCity(data.city));
+		// console.log('look at me!3',this.props.userState(data.state));
 
 		axios.post('http://localhost:3000/user/post', data).then((result) => {
 			// alert('Posted:' + result);
@@ -88,48 +95,27 @@ class Form extends Component {
 				zipcode: ''
 			};
 			this.setState(clearedData);
-			console.log('axios posted here!',result);
-			
+			// console.log('axios posted here!',result);
 		})
-
 			.catch((error) => {
 				alert('Failed: ' + error);
 			});
-
-
-
-
 	}
 
 
 	render() {
+		console.log('forms!', this.props);
 		return (
-
-
-
 			<div className="container">
-
 				<div className="row">
 					<div className="col-sm-3">
-
 					</div>
-
 					<div className="col-sm-5">
 						<div>
 							<div className="row">
 								<div className="col-med-4">
+
 									<form onSubmit={this.handleSubmit} onChange={this.handleChange}>
-										<label className="label-form">
-											Email:
-										</label>
-										<input className="Input" name="email" placeholder="Email" value={this.state.email} onChange={e => this.changeHandler(e)}/>
-
-										<br/>
-										<label className="label-form">
-											Password:
-										</label>
-										<input className="Input" name="password" placeholder="Password" type='password' value={this.state.password} onChange={e => this.changeHandler(e)}/>
-
 										<br/>
 										<label className="label-form">
 											Address:
@@ -137,7 +123,6 @@ class Form extends Component {
 										<input className="Input" name="address" placeholder="Address"
 											value={this.state.address}
 											onChange={e => this.changeHandler(e)}/>
-
 										<br/>
 										<label className="label-form">
 											City:
@@ -158,7 +143,9 @@ class Form extends Component {
 										<br/>
 
 
-										<button className="btn" type="submit" >Register
+
+										<button className="btn" type="submit">Submit
+
 										</button>
 
 
@@ -183,20 +170,22 @@ class Form extends Component {
 	}
 }
 
+
+function mapStateToProps(state){
+	return {
+		users: state.userInfo,
+
+	};
+}
+
 const mapDispatchToProps = dispatch => {
 	return bindActionCreators({
-		userAddress,userCity,userState
+		userInfo
+
 
 	}, dispatch);
 };
 
 
-// const mapStateToProps = function(store) {
-// 	return {
-// 		users: store.userState.users
-//
-//
-//
-// 	};
-// };
-export default connect(null, mapDispatchToProps)(Form);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

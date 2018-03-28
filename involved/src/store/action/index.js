@@ -1,28 +1,16 @@
-import { ADDRESS, CITY, STATE } from './actionTypes';
+
+import { USER_INFO } from './actionTypes';
+
 
 export { auth } from './auth';
 // export {address, city, state }  from './address';
 
-export function userAddress(payload) {
-	console.log('inside action2', payload);
-	return {
-		type: ADDRESS,
-		payload,
-	};
-}
 
-export function userCity(payload) {
-	console.log('inside action3', payload);
+export function userInfo(payload) {
+	// console.log('inside action2', payload);
 	return {
-		type: CITY,
-		payload,
-	};
+		type: USER_INFO,
 
-}
-export function userState(payload) {
-	 console.log('inside action4', payload);
-	return {
-		type: STATE,
 		payload,
 	};
 }

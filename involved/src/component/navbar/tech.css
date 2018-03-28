@@ -10,7 +10,7 @@
 
 }
 .Paragraph1{
-
+	text-align: justify;
 	padding-right: 15%;
 	padding-left: 15%;
 	border: 1px solid lightgrey;
@@ -21,12 +21,14 @@
 	padding-right: 30%;
 	padding-left: 30%;
 	border: 1px solid lightgrey;
+	text-align: justify;
 
 }
 .Titles{
 	padding-right: 30%;
 	padding-left: 30%;
 	border: 1px solid lightgrey;
+	text-align: justify;
 
 }
 .ListTou{
@@ -43,10 +45,19 @@
 }
 .Faq{
 	border: 1px solid slategray;
-	margin-left: 30%;
-	margin-right:30%;
-	padding-bottom: 6%
+	height: 80vh;
+	width: 40 vw;
+	padding-bottom: 6%;
+	display:flex;
 }
 .Paragraph3{
 	text-decoration: underline;
+}
+.termsOfUse{
+	border: 10px solid slategray;
+	height: 100%;
+
+	padding-left: 10%;
+	padding-right: 10%;
+
 }

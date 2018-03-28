@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 // import Flag from '../../public/flag.jpg';
 import './navbar.css';
 class NavBar extends Component {
@@ -14,10 +15,13 @@ class NavBar extends Component {
 						</div>
 						<div className="nav nav-pills nav-stacked">
 							<ul className="nav navbar-nav">
-								<li><a href="/">HomeScreen</a></li>
-								<li><a href="/form">Register</a></li>
-								<li><a href="/Map">Map of U.S. District</a></li>
-								<li><a href="/voterHomePage">VHP</a></li>
+
+								<li><Link to="/">HomeScreen</Link></li>
+								<li><Link to="/form">Get Involved</Link></li>
+								<li><Link to="/Map">Map</Link></li>
+								<li><Link to="/voterHomePage">Voter Home Page</Link></li>
+
+
 							</ul>
 						</div>
 					</div>

@@ -1,6 +1,6 @@
 #myFooter {
 		/* display: flex; */
-    background-color: #darkgrey;
+    background-color: #red;
     color: blue;
 		/* min-height: calc(100vh - 20vh); */
 
@@ -11,7 +11,7 @@
 
 
 #myFooter .row {
-    margin: 0 85px;
+    margin: auto;
 		background-color: slategray;
 }
 
@@ -50,6 +50,7 @@
 #myFooter a {
     color: white;
     text-decoration: none;
+		font-size: medium;
 }
 
 #myFooter a:hover,
@@ -72,13 +73,13 @@
     text-decoration: none;
     transition: color 0.2s;
 }
-
+/*
 @media screen and (max-width: 767px) {
     #myFooter {
         text-align: center;
 				/* padding-top: px; */
-    }
-    #myFooter .row {
+    /* } */
+    /* #myFooter .row {
         margin: 0;
     }
-}
+} */ 

@@ -3,15 +3,15 @@ import styled from 'styled-components';
 // import './homeScreen/homeScreen.css';
 const Wrapper =styled.div`
 border: 3px solid yellow;
-display: flex;
+margin: auto;
 width: 33%;
 height: 200px;
-margin-left: 34%;
-margin-right: 30%;
+float: none;
+
 `;
 const Polling = (props) => {
 	return (
-		<Wrapper className="col-md-3 repBoxes">
+		<Wrapper className="col-lg-12 repBoxes">
 			Polling Location
 			<br/>
 			{props.locationName}

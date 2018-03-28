@@ -7,7 +7,7 @@ const TermsOfUse = () => {
 		<div className="termsOfUse">
 			<p className="Paragraph1">
 
-				<h3 className="Titles">TEMPLATE WEBSITE TERMS AND CONDITIONS</h3>
+				<h3 className="Paragraph1">TEMPLATE WEBSITE TERMS AND CONDITIONS</h3>
 
 
 				<h3 className="Titles">Credit</h3>
@@ -79,14 +79,14 @@ const TermsOfUse = () => {
 
 				<p className="Paragraph1">Without prejudice to the generality of the foregoing paragraph, [Involved] does not warrant that:</p>
 
-						this website will be constantly available, or available at all; or
-						the information on this website is complete, true, accurate or non-misleading.
+				<li className="ListTou">	this website will be constantly available, or available at all; or</li>
+				<li className="ListTou">	the information on this website is complete, true, accurate or non-misleading.</li>
 
-					Nothing on this website constitutes, or is meant to constitute, advice of any kind.  [If you require advice in relation to any [legal, financial or medical] matter you should consult an appropriate professional.]
+				<li className="ListTou">	Nothing on this website constitutes, or is meant to constitute, advice of any kind.  [If you require advice in relation to any [legal, financial or medical] matter you should consult an appropriate professional.]</li>
 
-					Limitations of liability
+				<h3 className="Titles">	Limitations of liability</h3>
 
-					[Involved] will not be liable to you (whether under the law of contact, the law of torts or otherwise) in relation to the contents of, or use of, or otherwise in connection with, this website:
+				<p className="Paragraph1">[Involved] will not be liable to you (whether under the law of contact, the law of torts or otherwise) in relation to the contents of, or use of, or otherwise in connection with, this website:</p>
 
 				<li className="ListTou">[to the extent that the website is provided free-of-charge, for any direct loss;]</li>
 				<li className="ListTou">for any indirect, special or consequential loss; or</li>
@@ -160,15 +160,15 @@ const TermsOfUse = () => {
 
 				<p className="Paragraph1">[[Involved] [TAX] number is [Involved.]]</p>
 
-				<h5>[Involved] details</h5>
+				<h5 className="Paragraph1">[Involved] details</h5>
 
-				<h5>The full name of [Involved] is [FULL Involved].</h5>
+				<h5 className="Paragraph1">The full name of [Involved] is [FULL Involved].</h5>
 
-				<h5>[[Involved] is registered in [JURISDICTION] under registration number [Involved.]</h5>
+				<h5 className="Paragraph1">[[Involved] is registered in [JURISDICTION] under registration number [Involved.]</h5>
 
-				<h5>[Involved] [registered] address is [Galvanize].</h5>
+				<h5 className="Paragraph1">[Involved] [registered] address is [Galvanize].</h5>
 
-				<h5>You can contact [Involved] by email to [ksjjl05@gmail.com,c.castellano18@gmail.com].</h5>
+				<h5 className="Paragraph1">You can contact [Involved] by email to [ksjjl05@gmail.com,c.castellano18@gmail.com].</h5>
 
 			</p>
 		</div>
