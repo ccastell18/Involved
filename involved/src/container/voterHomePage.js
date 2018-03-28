@@ -12,17 +12,19 @@ import { bindActionCreators } from 'redux'
 import { userInfo } from '../store/action/index.js'
 import Iframe from 'react-iframe';
 import store from '../store/store.js'
-
+// import mapStateToProps from '../component/registration/form.js'
 const api_key = 'AIzaSyBgfiDlTi-VtbLrQ0CjcV6z2KbVX_h7kwA';
-const address = ''
-const city = ''
-const state = ''
+const address = '1515 wickersham'
+const city = 'austin'
+const state = 'texas'
 const id = '2000';
+
 
 class VoterHomePage extends Component {
 
 	constructor(props){
     super(props)
+
     this.state = {
 
 			showItems: false,
@@ -32,21 +34,21 @@ class VoterHomePage extends Component {
 			showPollingInfo: false,
 			showMap: false,
 
+
       elections: [],
       ocd: [],
       representatives: [],
       div: [],
     	voterInfo: [],
 			pollInfo: [],
-    };
 
+    };
 		this.showItems = this.showItems.bind(this);
     this.getElections = this.getElections.bind(this);
     this.getRepresentatives = this.getRepresentatives.bind(this);
     this.getVoterInfo= this.getVoterInfo.bind(this);
 		this.getPollingInfo= this.getPollingInfo.bind(this);
-
-  }
+}
 
 	async getElections() {
     console.log('Starting to fetch elections now.');
@@ -66,11 +68,10 @@ class VoterHomePage extends Component {
   async getRepresentatives(e) {
 		console.log('props in api call', this.props);
 		const userCredentials = this.props.userCredentials
-    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/representatives?key=${api_key}&address=${userCredentials.address} ${userCredentials.city} ${userCredentials.state}`)
+		console.log('inside of vhp',this.props.userCredentials);
+    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/representatives?key=${api_key}&address=${address} ${city} ${state}`)
     const data = await api_call.json()
     console.log(data)
-    let div = Object.keys(data.divisions)
-    console.log(div)
     let reps = []
     data.offices.forEach(office => {
       let newRep = {}
@@ -83,9 +84,11 @@ class VoterHomePage extends Component {
     console.log("reps",reps)
     this.setState({
       representatives: reps,
-      ocd: div
     });
-  }
+}
+
+
+
 
   async getVoterInfo() {
 
@@ -142,7 +145,6 @@ class VoterHomePage extends Component {
     }
   }
   displayElections() {
-
     if (this.state.elections.length > 0) {
       return this.state.elections.map( election => {
         return (<Election
@@ -151,7 +153,6 @@ class VoterHomePage extends Component {
 					electionDay={election.electionDay}/>
 				);
       })
-
     }
 		else {
       return (<p>Press a button above to begin.</p>);
@@ -214,7 +215,10 @@ class VoterHomePage extends Component {
 	}
 
 	render() {
-
+console.log('invhp', this.props.userCredentials)
+// console.log('invhp', this.props.userCredentials[1])
+// console.log('invhp', this.props.userCredentials[4])
+console.log('hello world',state.userInfo);
 		return(
 
 			<div >
@@ -303,10 +307,11 @@ class VoterHomePage extends Component {
 
 
 }
+
 const mapStateToProps = state => {
 	console.log('state in mapstatetoprops', state);
 	return {
-		userCredentials: state.userInfo[0],
+		userCredentials: state.reducer,
 
 	}
 }

@@ -56,7 +56,7 @@ class Form extends Component {
 	}
 
 	handleSubmit(event) {
-		console.log('submit handled?');
+		// console.log('submit handled?');
 		event.preventDefault();
 
 		let data = {
@@ -67,13 +67,10 @@ class Form extends Component {
 			state: this.state.state,
 			zipcode: this.state.zipcode
 		};
-		console.log('in handle submit');
+		console.log('in handle submit',this.props.userInfo(data));
+		localStorage.getItem('data', data);
+		console.log('STATE', localStorage.getItem('data',this.props.data));
 		this.props.userInfo(data);
-
-
-
-
-
 
 		axios.post('http://localhost:3000/user/post', data).then((result) => {
 			// alert('Posted:' + result);
@@ -86,40 +83,27 @@ class Form extends Component {
 				zipcode: ''
 			};
 			this.setState(clearedData);
-			console.log('axios posted here!',result);
-
+			// console.log('axios posted here!',result);
 		})
-
 			.catch((error) => {
 				alert('Failed: ' + error);
 			});
-
-
-
-
 	}
 
 
 	render() {
 		console.log('forms!', this.props);
 		return (
-
-
-
 			<div className="container">
-
 				<div className="row">
 					<div className="col-sm-3">
-
 					</div>
-
 					<div className="col-sm-5">
 						<div>
 							<div className="row">
 								<div className="col-med-4">
+
 									<form onSubmit={this.handleSubmit} onChange={this.handleChange}>
-
-
 										<br/>
 										<label className="label-form">
 											Address:
@@ -127,7 +111,6 @@ class Form extends Component {
 										<input className="Input" name="address" placeholder="Address"
 											value={this.state.address}
 											onChange={e => this.changeHandler(e)}/>
-
 										<br/>
 										<label className="label-form">
 											City:
@@ -148,7 +131,7 @@ class Form extends Component {
 										<br/>
 
 
-										<button className="btn" ><Link to="/voterHomePage">Voter Home Page</Link>
+										<button className="btn" type="submit">Voter Home Page
 										</button>
 
 
@@ -175,7 +158,8 @@ class Form extends Component {
 
 function mapStateToProps(state){
 	return {
-		users: state.userInfo
+		users: state.userInfo,
+
 	};
 }
 
@@ -187,12 +171,4 @@ const mapDispatchToProps = dispatch => {
 };
 
 
-// const mapStateToProps = function(store) {
-// 	return {
-// 		users: store.userState.users
-//
-//
-//
-// 	};
-// };
 export default connect(mapStateToProps, mapDispatchToProps)(Form);

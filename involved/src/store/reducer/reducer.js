@@ -1,27 +1,29 @@
 // import Redux from 'redux';
 
 import { USER_INFO } from '../action/actionTypes';
-const initalState = {
-	address:'1515 wickersham',
-	city: 'Austin',
-	state:'Texas'
-};
+// const initalState = {
+// 	address:'',
+// 	city: '',
+// 	state:''
+// };
 
 
-const reducer = (state = initalState, action) =>{
+const reducer = (state = null ,action) =>{
 	switch(action.type)
 	{
 
 	case USER_INFO:
-		console.log('hello2', action.payload);
+		// console.log('hello2', action.payload);
 		return[
 
 			...state,
 			{
 				userCredentials: action.payload
+
 			}];
+	default:
+		return state;
 	}
 
-	return state;
 };
 export default reducer;
