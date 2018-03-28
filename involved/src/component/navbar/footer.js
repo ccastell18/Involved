@@ -12,7 +12,7 @@ class Footer extends Component{
 							<h5>Get started</h5>
 							<ul>
 								<li><Link to="/">Home</Link></li>
-								<li><Link to="/form">Sign up</Link></li>
+								<li><Link to="/form">Get Involved</Link></li>
 							</ul>
 						</div>
 						<div className="col-sm-2">
@@ -26,7 +26,7 @@ class Footer extends Component{
 							<h5>Support</h5>
 							<ul>
 								<li><Link to="/FAQ">FAQ</Link></li>
-								<li><a href="https://www.usa.gov/register-to-vote">Voters Registration</a></li>
+								<li><Link to="/Map">Map of U.S. Districts</Link></li>
 							</ul>
 						</div>
 						<div className="col-sm-2">
@@ -39,8 +39,8 @@ class Footer extends Component{
 						<div className="col-sm-2">
 							<h5>Features</h5>
 							<ul>
-								<li><Link to="/Map">Map of U.S. Districts</Link></li>
-								<li><a href="http://www.politifact.com/">Fact Checker</a></li>
+								<li><a href="https://www.usa.gov/register-to-vote">U.S Voters Registration</a></li>
+								<li><a href="https://www.votetexas.gov/register-to-vote/index.html">Texas Voters Registration</a></li>
 							</ul>
 						</div>
 					</div>

@@ -16,7 +16,7 @@ class NavBar extends Component {
 						<div className="nav nav-pills nav-stacked">
 							<ul className="nav navbar-nav">
 								<li><Link to="/">HomeScreen</Link></li>
-								<li><Link to="/form">Register</Link></li>
+								<li><Link to="/form">Get Involved</Link></li>
 								<li><Link to="/Map">Map</Link></li>
 								<li><Link to="/voterHomePage">Voter Home Page</Link></li>
 							</ul>

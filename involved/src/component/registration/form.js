@@ -131,7 +131,7 @@ class Form extends Component {
 										<br/>
 
 
-										<button className="btn" type="submit">Voter Home Page
+										<button className="btn" type="submit">Submit
 										</button>
 
 

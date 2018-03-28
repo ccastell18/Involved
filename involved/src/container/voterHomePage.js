@@ -26,7 +26,7 @@ class VoterHomePage extends Component {
     super(props)
 
     this.state = {
-
+			toggle: false,
 			showItems: false,
 			showElections: false,
 			showReps: false,
@@ -66,10 +66,10 @@ class VoterHomePage extends Component {
   }
 
   async getRepresentatives(e) {
-		console.log('props in api call', this.props);
-		const userCredentials = this.props.userCredentials
+		console.log('props in api call', this.props.userCredentials);
+		// const userCredentials = this.props.userCredentials
 		console.log('inside of vhp',this.props.userCredentials);
-    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/representatives?key=${api_key}&address=${address} ${city} ${state}`)
+    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/representatives?key=${api_key}&address=${this.props.userCredentials.address} ${this.props.userCredentials.city} ${this.props.userCredentials.state}`)
     const data = await api_call.json()
     console.log(data)
     let reps = []
@@ -93,7 +93,7 @@ class VoterHomePage extends Component {
   async getVoterInfo() {
 
     console.log('Starting to fetch voterinfo now.');
-    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/voterinfo?key=${api_key}&address=${address} ${city} ${state}&electionId=${id}`)
+    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/voterinfo?key=${api_key}&address=${this.props.userCredentials.address} ${this.props.userCredentials.city} ${this.props.userCredentials.state}&electionId=${id}`)
     console.log("got info")
     const data = await api_call.json()
     console.log(data);
@@ -119,7 +119,7 @@ class VoterHomePage extends Component {
 
 	async getPollingInfo() {
 
-    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/voterinfo?key=${api_key}&address=${address} ${city} ${state}&electionId=${id}`)
+    const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/voterinfo?key=${api_key}&address=${this.props.userCredentials.address} ${this.props.userCredentials.city} ${this.props.userCredentials.state}&electionId=${id}`)
     const data = await api_call.json()
 		console.log("got info", data)
     console.log(data);
@@ -133,6 +133,7 @@ class VoterHomePage extends Component {
     if (this.state.voterInfo.length >0) {
       return this.state.voterInfo.map( voter => {
         return (<VoterInfo
+					key={voter.candidate.name}
 					office={voter.office}
 					name={voter.candidate.name}
 					party={voter.candidate.party}
@@ -162,9 +163,10 @@ class VoterHomePage extends Component {
 
   displayRepresentatives() {
     if (this.state.representatives.length > 0) {
-      return this.state.representatives.map( representative => {
+      return this.state.representatives.map( (representative, index) => {
 
         return (<Representatives
+					key={index}
 					office={representative.office} 						 name={representative.official.name} party={representative.official.party}
         	phones={representative.official.phones}
         	urls={representative.official.urls}
@@ -181,6 +183,7 @@ class VoterHomePage extends Component {
 			console.log('here2');
 			return this.state.pollInfo.map( polling => {
 				return (<Polling
+					key={polling.address.locationName}
 					locationName={polling.address.locationName}
 					line1={polling.address.line1}
 					city={polling.address.city}
@@ -215,6 +218,9 @@ class VoterHomePage extends Component {
 	}
 
 	render() {
+//		this.setState({
+	//		toggle = !this.state.toggle
+		//})
 console.log('invhp', this.props.userCredentials)
 // console.log('invhp', this.props.userCredentials[1])
 // console.log('invhp', this.props.userCredentials[4])
@@ -266,12 +272,16 @@ console.log('hello world',state.userInfo);
 					)
 				}
 				{
-					this.state.showPollingInfo &&
+					(this.state.showPollingInfo)&&
 					(
 						<div className="container-fluid">
 							<div className="row">
 
-								{this.displayPollingInfo()}
+								{
+									this.state.pollInfo !== undefined ? this.displayPollingInfo() : (
+									<p> no info avilable</p>
+									)
+								}
 							</div>
 
 						</div>
@@ -311,7 +321,7 @@ console.log('hello world',state.userInfo);
 const mapStateToProps = state => {
 	console.log('state in mapstatetoprops', state);
 	return {
-		userCredentials: state.reducer,
+		userCredentials: state.reducer.userCredentials,
 
 	}
 }
