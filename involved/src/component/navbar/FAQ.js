@@ -45,15 +45,9 @@ const FAQ = () => {
 							</li>
 						</section>
 					</div>
-
-
-
 				</div>
 			</div>
 		</div>
-
-
-
 	);
 };
 export default FAQ;

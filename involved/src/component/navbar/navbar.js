@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import Flag from '../../public/flag.jpg';
 import './navbar.css';
 class NavBar extends Component {
 	render(){
@@ -11,17 +10,13 @@ class NavBar extends Component {
 					<div className="nav-bar-container">
 						<div className="navbar-header">
 							<a href="/" className="navbar-brand">Involved</a>
-
 						</div>
 						<div className="nav nav-pills nav-stacked">
 							<ul className="nav navbar-nav">
-
 								<li><Link to="/">HomeScreen</Link></li>
 								<li><Link to="/form">Get Involved</Link></li>
 								<li><Link to="/Map">Map</Link></li>
 								<li><Link to="/voterHomePage">Voter Home Page</Link></li>
-
-
 							</ul>
 						</div>
 					</div>

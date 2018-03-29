@@ -52,9 +52,3 @@ class Footer extends Component{
 			</footer>
 		);}}
 export default Footer;
-//<iframe id="map-container" frameborder="0" style="border:0"
-// 	src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJOwg_06VPwokRYv534QaPC8g&key=AIzaSyBcx8NGKYA105FzrDmoWibrnegRKY3l4rs" >
-// </iframe>
-
-// working on the map part down
-// <div><script src="https://maps.googleapis.com/maps/Linkpi/js?key=AIzaSyBcx8NGKYA105FzrDmoWibrnegRKY3l4rs&callback=initMap" async defer></script></div>;

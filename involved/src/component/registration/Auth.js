@@ -2,12 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../../store/action/index'
 import Input from '../input/input'
-// import Button from '../UI/buttons'
 import './form.css'
 import '../UI/button.css'
-
-
-
 
 class Auth extends Component {
   state = {
@@ -105,7 +101,7 @@ console.log('stuff here', this.state.controls);
 				<div className="container">
 					<div className="row">
 						<div className="col-sm-3">
-							
+
 								</div>
 						<div className="col-sm-3">
 

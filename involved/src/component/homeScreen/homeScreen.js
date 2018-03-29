@@ -1,21 +1,11 @@
 import React, { Component } from 'react';
-
-// import './homeScreen.css';
 import { Link } from 'react-router-dom';
-
 import './landing.css';
 
-
 class HomeScreen extends Component{
-
-
-
 	render() {
-
-
 		return(
 			<div>
-
 				<section className="HomeScreen">
 					<h3>Involved</h3>
 					<br />
@@ -24,11 +14,8 @@ class HomeScreen extends Component{
 					</p>
 					<br />
 					<button	className="btn"><Link to="/form">Get Involved</Link></button>
-
 				</section>
 			</div>
-
-
 		);
 	}
 }

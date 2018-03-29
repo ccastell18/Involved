@@ -26,7 +26,7 @@ const Polling = (props) => {
 			<br/>
 			Hours:
 			<br/>
-			 {props.pollingHours}
+			{props.pollingHours}
 		</Wrapper>
 	);
 };

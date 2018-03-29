@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-
-// import Form from '../component/form'
 import axios from 'axios';
-
 import Election from '../component/smart_buttons/elections'
 import Button from '../component/buttons'
 import Representatives from '../component/smart_buttons/representatives'
@@ -12,11 +9,8 @@ import './App.css'
 import Form  from '../component/registration/form.js'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-
 import { userInfo } from '../store/action/index.js'
 import Iframe from 'react-iframe';
-// import store from '../store/store.js'
-// import mapStateToProps from '../component/registration/form.js'
 const api_key = 'AIzaSyBgfiDlTi-VtbLrQ0CjcV6z2KbVX_h7kwA';
 const address = ''
 const city = ''
@@ -67,35 +61,6 @@ class VoterHomePage extends Component {
 		this.getPollingInfo= this.getPollingInfo.bind(this);
 }
 
-	componentDidMount(){
-
-	let elecId = []
-	console.log(elecId)
-	console.log('MOUNTED')
-	axios.get(`https://www.googleapis.com/civicinfo/v2/elections?key=` + api_key)
-		.then(function(data){
-			console.log(data)
-			axios.get(`https://www.googleapis.com/civicinfo/v2/representatives?key=${api_key}&address=${address} ${city} ${state}`)
-			.then(function(representatives){
-				data.data.elections.forEach( election =>{
-						representatives.data.offices.forEach(office => {
-							if(election.ocdDivisionId === office.divisionId){
-								if (!elecId.includes(election.id)) {
-									elecId.push(election.id)
-									console.log(elecId)
-								}
-
-							 }
-						})
-				})
-
-			})
-		})
-		this.setState({
-			id: elecId
-		})
-
-}
 	async getElections() {
     console.log('Starting to fetch elections now.');
     const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/elections?key=` + api_key)
@@ -132,17 +97,10 @@ class VoterHomePage extends Component {
     })
     console.log("reps",reps)
     this.setState({
-
       representatives: reps,
     });
 }
-
-
-
-
   async getVoterInfo() {
-
-
     console.log('Starting to fetch voterinfo now.');
 
     const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/voterinfo?key=${api_key}&address=${this.props.userCredentials.address} ${this.props.userCredentials.city} ${this.props.userCredentials.state}&electionId=${id}`)
@@ -158,28 +116,20 @@ class VoterHomePage extends Component {
 					let rep = {}
 					rep.office = contest.office;
 					rep.candidate = candidate;
-
-
 					vote.push(rep)
-
 					})
 				}
 			})
-
 			console.log('voter info here', vote)
 				this.setState({
 	      voterInfo: vote
 			});
 	    console.log('New State', this.state);
 		}
-
   }
 
 	async getPollingInfo() {
-
-
     const api_call = await fetch(`https://www.googleapis.com/civicinfo/v2/voterinfo?key=${api_key}&address=${this.props.userCredentials.address} ${this.props.userCredentials.city} ${this.props.userCredentials.state}&electionId=${id}`)
-
     const data = await api_call.json()
 		console.log("got info", data)
     console.log(data);
@@ -199,33 +149,21 @@ class VoterHomePage extends Component {
 					party={voter.candidate.party}
 					candidateUrl={voter.candidate.candidateUrl}/>
 				);
-
       })
     }
 		else {
       return (<p>No Information to present.</p>);
     }
   }
-
-
   displayElections() {
     if (this.state.elections.length > 0) {
       return this.state.elections.map( election => {
-				if(this.state.id.length >0){
-					return this.state.id.map(id =>{
-						if (election.id === id){
-							console.log(election)
+
 							return (<Election
 								key={election.id}
 								name={election.name}
 								electionDay={election.electionDay}/>
-
-							);
-						}
-					})
-				}
-
-
+						);
       })
     }
 		else {
@@ -235,9 +173,7 @@ class VoterHomePage extends Component {
 
 	displayRepresentatives() {
     if (this.state.representatives.length > 0) {
-
       return this.state.representatives.map( (representative, index) => {
-
         return (<Representatives
 					key={index}
 					office={representative.office} 						 name={representative.official.name} party={representative.official.party}
@@ -246,7 +182,6 @@ class VoterHomePage extends Component {
 					image={representative.official.photoUrl}
 					/>
 				);
-
       })
     }
 		else{
@@ -260,9 +195,7 @@ class VoterHomePage extends Component {
 			console.log('here2');
 			return this.state.pollInfo.map( polling => {
 				return (<Polling
-
 					key={polling.address.line1}
-
 					locationName={polling.address.locationName}
 					line1={polling.address.line1}
 					city={polling.address.city}
@@ -287,7 +220,6 @@ class VoterHomePage extends Component {
 			showReps,
 			showVotorInfo,
 			showPollingInfo,
-
 		})
 	}
 	_showMap = bool =>{
@@ -295,13 +227,9 @@ class VoterHomePage extends Component {
 			showMap: bool
 		})
 	}
-
 	render() {
 		return(
-
 			<div >
-
-
 				<div id="smart_buttons">
 					<Button className="VHP"
 					showItems={this.showItems}
@@ -358,7 +286,6 @@ class VoterHomePage extends Component {
 								)
 							}
 							</div>
-
 						</div>
 					)
 				}
@@ -386,40 +313,22 @@ class VoterHomePage extends Component {
 			allowFullScreen/>
 	</div>
 ) }
-
-
-
-
 </div>
-
-
-
 </div>
 );
-
 	}
-
-
 }
 
 const mapStateToProps = state => {
 	console.log('state in mapstatetoprops', state);
 	return {
-
 		userCredentials: state.reducer.userCredentials,
-
-
-
 	}
 }
-// const mapActionsToProps =
 
 const mapDispatchToProps = dispatch => {
 	return bindActionCreators({
-
 		userInfo
-
-
 	})
 }
 export default connect(mapStateToProps, mapDispatchToProps)(VoterHomePage)

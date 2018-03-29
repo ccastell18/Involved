@@ -7,9 +7,6 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import { userInfo } from '../../store/action/index.js';
 import { connect } from 'react-redux';
-// import store from '../../store/store.js';
-// import { Redirect } from 'react-router';
-// import { Link } from 'react-router-dom';
 
 const Image = styled.img`
 width: 300px;
@@ -32,8 +29,7 @@ class Form extends Component {
 			zipcode: ''
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
-		// this.changeHandler = this.changeHandler.bind(this);
-		// this.submitHandler = this.submitHandler.bind(this);
+	
 	}
 	// changes the handler so you can type
 	changeHandler(e) {
@@ -69,20 +65,12 @@ class Form extends Component {
 			state: this.state.state,
 			zipcode: this.state.zipcode
 		};
-		console.log('in handle submit',this.props.userInfo(data));
+		// console.log('in handle submit',this.props.userInfo(data));
 		localStorage.getItem('data', data);
-		console.log('STATE', localStorage.getItem('data',this.props.data));
+		// console.log('STATE', localStorage.getItem('data',this.props.data));
+
+
 		this.props.userInfo(data);
-
-
-
-
-
-
-		//
-		// console.log('look at me!',this.props.userAddress(data.address));
-		// console.log('look at me!2',	this.props.userCity(data.city));
-		// console.log('look at me!3',this.props.userState(data.state));
 
 		axios.post('http://localhost:3000/user/post', data).then((result) => {
 			// alert('Posted:' + result);

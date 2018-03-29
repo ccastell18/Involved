@@ -23,8 +23,6 @@ const ContactInfo = () => {
 	return(
 
 		<div className="container">
-
-
 			<div className="row">
 				<div className="col-xs-6 col-sm-6">
 					<div className="Cat">

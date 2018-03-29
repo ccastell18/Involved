@@ -1,11 +1,9 @@
 import React from 'react';
-
 import classes from './input.css';
 
 const input = ( props ) => {
 	let inputElement = null;
 	const inputClasses = [classes.InputElement];
-
 	if (props.invalid && props.shouldValidate && props.touched) {
 		inputClasses.push(classes.Invalid);
 	}

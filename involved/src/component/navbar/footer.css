@@ -1,14 +1,10 @@
 #myFooter {
-		/* display: flex; */
     background-color: #red;
     color: blue;
-		/* min-height: calc(100vh - 20vh); */
-
     bottom: 0;
 		min-width: 100%
 
 }
-
 
 #myFooter .row {
     margin: auto;
@@ -73,13 +69,3 @@
     text-decoration: none;
     transition: color 0.2s;
 }
-/*
-@media screen and (max-width: 767px) {
-    #myFooter {
-        text-align: center;
-				/* padding-top: px; */
-    /* } */
-    /* #myFooter .row {
-        margin: 0;
-    }
-} */ 
