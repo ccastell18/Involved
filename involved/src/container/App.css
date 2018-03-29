@@ -1,0 +1,89 @@
+.App {
+  text-align: center;
+}
+.App-header {
+  background-color: rgb(169,169,169);
+  height: 150px;
+  padding: 20px;
+  color: black;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+.VHP{
+	background-color: white;
+	 border: 1px solid black;
+	 color: black;
+	 padding: 10px 25px;
+	 text-align: center;
+	 text-decoration: none;
+	 display: inline-block;
+	 margin: 4px 2px;
+	 cursor: pointer;
+
+}
+.btn{
+	background-color: slategray;
+	 border: 1px solid black;
+	 color: white;
+	 padding: 10px 25px;
+	 text-align: center;
+	 text-decoration: none;
+	 display: inline-block;
+	 margin: 4px 2px;
+	 cursor: pointer;
+
+}
+.elections{
+	background-color: slategray;
+	 border: 1px solid black;
+	 color: white;
+	 padding: 10px 25px;
+	 text-align: center;
+	 text-decoration: none;
+	 display: inline-block;
+	 margin: 4px 2px;
+	 cursor: pointer;
+}
+.Voter{
+	background-color: slategray;
+	 border: 1px solid black;
+	 color: white;
+	 padding: 10px 25px;
+	 text-align: center;
+	 text-decoration: none;
+	 display: inline-block;
+	 margin: 4px 2px;
+	 cursor: pointer;
+
+}
+.Representatives{
+	background-color: slategray;
+	 border: 1px solid black;
+	 color: white;
+	 padding: 10px 25px;
+	 text-align: center;
+	 text-decoration: none;
+	 display: inline-block;
+	 margin: 4px 2px;
+	 cursor: pointer;
+
+}
+.Polling{
+	background-color: slategray;
+	 border: 1px solid black;
+	 color: white;
+	 padding: 10px 25px;
+	 text-align: center;
+	 text-decoration: none;
+	 display: inline-block;
+	 margin: 4px 2px;
+	 cursor: pointer;
+
+
+}

@@ -1,0 +1,24 @@
+
+.label-form{
+	color: black;
+	text-align: left;
+	padding-right: 325px
+}
+#label{
+	color: red;
+	padding-right: 50px
+}
+.btn{
+	background-color: white;
+	 border: 1px solid black;
+	 color: black;
+	 padding: 10px 25px;
+	 text-align: center;
+	 text-decoration: none;
+	 display: inline-block;
+	 margin: 4px 2px;
+	 cursor: pointer;
+}
+.AuthForm{
+	padding-top: 100px;
+}

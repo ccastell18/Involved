@@ -1,0 +1,64 @@
+.TechStack{
+	background-color: lightgrey;
+	margin-bottom: 0;
+}
+.Paragraph{
+
+	padding-right: 30%;
+	padding-left: 30%;
+	border: 1px solid lightgrey;
+
+}
+.Paragraph1{
+	text-align: justify;
+	padding-right: 15%;
+	padding-left: 15%;
+	border: 1px solid lightgrey;
+
+}
+
+.Listfaq{
+	padding-right: 30%;
+	padding-left: 30%;
+	border: 1px solid lightgrey;
+	text-align: justify;
+
+}
+.Titles{
+	padding-right: 30%;
+	padding-left: 30%;
+	border: 1px solid lightgrey;
+	text-align: justify;
+
+}
+.ListTou{
+	padding-right: 30%;
+	padding-left: 30%;
+	border: 1px solid lightgrey;
+
+
+}
+.Cat{
+	display: flex;
+	border: 1px solid slategray;
+	padding-top: 3px;
+	margin-top: 10px;
+
+}
+.Faq{
+	border: 1px solid slategray;
+	height: 80vh;
+	width: 40 vw;
+	/* padding-left: 10%; */
+	padding-bottom: 6%;
+	display:flex;
+}
+.Paragraph3{
+	text-decoration: underline;
+}
+.termsOfUse{
+	border: 1px solid slategray;
+	height: 100%;
+margin-left: 10%;
+margin-right: 10%;
+}
