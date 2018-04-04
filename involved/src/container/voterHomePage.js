@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import Election from '../component/smart_buttons/elections'
 import Button from '../component/buttons'
 import Representatives from '../component/smart_buttons/representatives'
@@ -12,9 +12,9 @@ import { bindActionCreators } from 'redux'
 import { userInfo } from '../store/action/index.js'
 import Iframe from 'react-iframe';
 const api_key = 'AIzaSyBgfiDlTi-VtbLrQ0CjcV6z2KbVX_h7kwA';
-const address = ''
-const city = ''
-const state = ''
+// const address = ''
+// const city = ''
+// const state = ''
 const id = '2000';
 
 
@@ -39,7 +39,7 @@ class VoterHomePage extends Component {
 			showReps: false,
 			showVotorInfo: false,
 			showPollingInfo: false,
-			showMap: false,
+			// showMap: false,
 
 
 			voterInfoId: [],
@@ -185,7 +185,7 @@ class VoterHomePage extends Component {
       })
     }
 		else{
-			<p>Can Not Retrieve Information.</p>
+			// <p>Can Not Retrieve Information.</p>
 		}
   }
 
