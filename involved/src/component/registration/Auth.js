@@ -4,7 +4,7 @@ import * as actions from '../../store/action/index'
 import Input from '../input/input'
 import './form.css'
 import '../UI/button.css'
-
+import axios from 'axios';
 class Auth extends Component {
   state = {
     controls: {
